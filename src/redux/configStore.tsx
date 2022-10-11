@@ -1,8 +1,10 @@
 import {configureStore, PayloadAction} from '@reduxjs/toolkit';
+import ProducReducers from './reducers/ProducReducers';
 
 
 export const store = configureStore({
     reducer: {
+        ProducReducers:ProducReducers
     }
 })
 
