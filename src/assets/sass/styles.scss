@@ -1,14 +1,18 @@
 //  Base
-@import "./base/base.scss";
+@import "./base/base";
+
 //  Themes
 @import "./themes/variable";
+
 //  Pages
 @import "./pages/profile.scss";
 @import "./pages/jobdetail.scss";
 @import "./pages/category.scss";
 @import "./pages/menuPages.scss";
 @import "./pages/headerCategories.scss";
+
 //  Components
+@import "./components/header.scss";
 
 .icon-next{
     color: red;

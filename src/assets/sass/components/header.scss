@@ -1,0 +1,21 @@
+@import "../themes/variable";
+@import "../base/base";
+
+.navbar{
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: 0 50px;
+    .navbar-brand{
+        align-items: center;
+        .svg-inline--fa{
+            color: $cl-cart;
+            font-size: $text-8;
+        }
+    }
+    .collapse{
+        justify-content: end;
+        li{
+            margin: 0 5px;
+        }
+    }
+}
