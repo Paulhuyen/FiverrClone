@@ -2,6 +2,7 @@
 @import "../base/base.scss";
 
 .Header-Categories{
+    z-index: 5;
     .container{
         .banner-category{
             margin-top: 10px;
@@ -16,6 +17,7 @@
                 position: relative;
                 text-align: center;
                 margin: auto;
+                z-index: 1;
         
                 img {
                     width: 100%;
@@ -96,3 +98,23 @@
     }
 
 }
+
+.services {
+    margin-top: 50px;
+    text-align: center;
+    h3 {
+      margin-bottom: 30px;
+    }
+    ul {
+      span {
+        margin: 5px;
+        display: inline-block;
+        background-color: $bg-cl-services ;
+        padding: 5px 8px;
+        border-radius: 20px;
+        a {
+            color:$cl-text-black
+        }
+      }
+    }
+  }

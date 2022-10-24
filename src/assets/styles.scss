@@ -5,12 +5,18 @@
 //  Pages
 @import "./pages/profile.scss";
 @import "./pages/jobdetail.scss";
-@import "./pages/category.scss";
+// @import "./pages/category.scss";
 @import "./pages/menuPages.scss";
 @import "./pages/headerCategories.scss";
+@import "./components/footer.scss";
+// admin
+@import "./Admin/home.scss";
+@import "./Admin/managenment.scss";
+@import "./Admin/table.scss";
 //  Components
+@import './components//formModal.scss'
 
-.icon-next{
-    color: red;
-    font-size: 30px;
-}
+// .icon-next{
+//     color: red;
+//     font-size: 30px;
+// }

@@ -137,8 +137,11 @@
                                 font-size: $text-16;
                                 padding: 3px 0;
                             }
-                            p{
+                            a{
                                 font-size: $text-14;
+                                margin-left: 5px;
+                                color: $cl-add-profile;
+
                             }
                             margin-top: 10px;
                         }

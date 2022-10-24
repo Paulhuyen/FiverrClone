@@ -1,0 +1,42 @@
+@import "../themes/variable";
+
+.main{
+    font-size: $text-14;
+    padding: 20px 50px;
+    main{
+        margin-bottom: 20px;
+    }
+    header{
+        .search{
+            margin-bottom: 20px;
+            float: right;
+            position: relative;
+            input{
+                width: 350px;
+                padding: 5px 10px;
+                border-radius: 20px;
+                border: 1px solid $bg-table;
+            }
+            .btn-search{
+                background-color: white;
+                border: none;
+                padding: 1px 5px;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                border-radius: 20px;
+            }
+        }
+        .show-table{
+            .table{
+                text-align: center;
+                thead{
+                    background-color: $bg-table;
+                    color: $cl-text-white;
+                }
+            }
+
+        }
+
+    }
+}
