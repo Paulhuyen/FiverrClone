@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { Navigate, NavLink, useNavigate } from 'react-router-dom';
-import "../../assets/sass/style.scss";
+import "../../assets/style.scss";
 import DetailCategories from '../../pages/Categories/DetailCategories';
 import { AppDispatch, RootState } from '../../redux/configStore';
 import { getAllChiTietLoaiCV, getAllMenuLoaiCV, ProductModel,menuModel } from '../../redux/reducers/ProducReducers';
