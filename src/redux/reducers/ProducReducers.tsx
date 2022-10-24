@@ -34,9 +34,6 @@ export interface DsChiTietLoai {
   tenChiTiet: string;
 }
 
-
-
-
 const initialState: any = {
   jobCategories: [],
   menuLoaiCV: [],

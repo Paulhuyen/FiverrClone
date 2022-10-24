@@ -1,0 +1,118 @@
+.slider {
+  .container {
+    .carousel {
+      position: initial;
+      .carousel-inner {
+        background-image: url(../../../public/img/carousel/hero-andrea.webp);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 600px;
+        position: absolute;
+        top: 0%;
+        left: 0;
+        .row {
+          margin: 0;
+          display: block;
+          padding: 0 32px;
+          margin: 0 50px;
+          transform: translateY(50%);
+          .col {
+            width: 50%;
+            padding: 0;
+            .item {
+              h1 {
+                color: $cl-text-white;
+                font-weight: $f-weight-700;
+                margin-right: 10px;
+              }
+              i {
+                font-size: $text-40;
+                color: $cl-text-white;
+              }
+              .form {
+                .icon {
+                  width: 50px;
+                  display: inline-block;
+                  height: 50px;
+                  line-height: 50px;
+                  padding-left: 15px;
+                  border: solid 1px white;
+                  border-right: none;
+                  border-radius: 5px 0 0 5px;
+                  background-color: $bg-white;
+                  margin: 1px 0;
+                  .svg-inline--fa {
+                    font-size: $text-20;
+                  }
+                }
+                input {
+                  padding: 12px 200px 8.5px 0px;
+                  border: solid 1px white;
+                  border-right: none;
+                  border-left: none;
+                  &:focus-visible{
+                    outline: none;
+                  }
+                }
+                button {
+                  border: solid 2px $bg-button;
+                  border-left: none;
+                  border-radius: 0 5px 5px 0;
+                  padding: 12px 30px 8.5px 30px;
+                  background-color: $bg-button;
+                  color: $cl-text-white;
+                  &:hover {
+                    background-color: $bg-button-hover;
+                    border-color: $bg-button-hover;
+                  }
+                }
+              }
+              .popular {
+                align-items: center;
+                span {
+                  font-size: $text-14;
+                  color: $cl-text-white;
+                  font-weight: $f-weight-600;
+                }
+                a {
+                  font-size: $text-14;
+                  color: $cl-text-white;
+                  font-weight: $f-weight-600;
+                  border: solid 1px $cl-text-white;
+                  display: inline-block;
+                  padding: 5px 10px;
+                  margin: 0 10px;
+                  border-radius: 17px;
+                  &:hover {
+                    color: $cl-text-black;
+                    background-color: $bg-white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.partners {
+  position: relative;
+  transform: translateY(350%);
+  background-color: $bg-ligthgray;
+  padding: 20px;
+  .container {
+    ul {
+      justify-content: center;
+      align-items: center;
+      li {
+        padding: 0 24px;
+        color: #b5b6ba;
+        font-weight: $f-weight-600;
+        font-size: $text-16;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 // Text color
 $cl-text:#62646a;
+$cl-text-grey: #b5b6ba;
 $cl-text-white: white;
 $cl-text-black: black;
 $cl-add-profile: #00698c;
@@ -7,11 +8,16 @@ $cl-star:#ffb33e;
 $cl-cart:#1dbf73;
 $cl-primary:#2280fa;
 
+
 // Background
 $bg-profile:#74767e;
 $bg-prod-hover:#d3d3d386;
 $bg-profile-border:#d1d1d1;
 $bg-white-border:#d1d1d1;
+$bg-button: #1dbf73;
+$bg-button-hover: #19a463;
+$bg-white: #fff;
+$bg-ligthgray: #fafafa;
 
 // Font size
 $text-8: 8px;
@@ -25,6 +31,7 @@ $text-22: 22px;
 $text-24: 24px;
 $text-26: 26px;
 $text-30: 30px;
+$text-40: 40px;
 
 // Font
 //-------- Font Weight

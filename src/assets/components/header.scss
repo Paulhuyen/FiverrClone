@@ -1,12 +1,13 @@
-@import "../themes/variable";
-@import "../base/base";
-
 .navbar{
     padding-left: 32px;
     padding-right: 32px;
     margin: 0 50px;
+    z-index: 10;
     .navbar-brand{
         align-items: center;
+        h4{
+            font-weight: $f-weight-700;
+        }
         .svg-inline--fa{
             color: $cl-cart;
             font-size: $text-8;
@@ -14,8 +15,20 @@
     }
     .collapse{
         justify-content: end;
-        li{
-            margin: 0 5px;
+        ul{
+            align-items: center;
+            li{
+                margin: 0 5px;
+                button{
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    &:hover{
+                        background-color: $bg-button;
+                        border-color: $cl-cart;
+                        color: $cl-text-white;
+                    }
+                }
+            }
         }
     }
 }

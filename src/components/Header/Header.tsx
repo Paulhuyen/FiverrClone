@@ -7,7 +7,8 @@ type Props = {
 
 export default function Header(props: Props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <>
+      <nav className="navbar navbar-expand-sm navbar-dark">
       <NavLink className="navbar-brand d-flex" to="/home">
         <h4>fiverr</h4>
         <span>
@@ -28,25 +29,29 @@ export default function Header(props: Props) {
       <div className="collapse navbar-collapse" id="collapsibleNavId">
         <ul className="navbar-nav mt-2 mt-lg-0">
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/" aria-current="page">
+            <NavLink className="nav-link active" to="" aria-current="page">
               Become a Seller <span className="visually-hidden">(current)</span>
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link" to="/login">
               Sign in
             </NavLink>
           </li>
           <li>
-            <button
+            <NavLink className='nav-link' to='/signup'>
+              <button
               className="btn btn-outline-light my-2 my-sm-0"
               type="submit"
-            >
-              Join
+              >
+                Join
             </button>
+            </NavLink>
           </li>
         </ul>
       </div>
     </nav>
+    
+    </>
   );
 }
