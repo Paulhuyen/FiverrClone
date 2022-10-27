@@ -10,7 +10,7 @@ export default function Header(props: Props) {
     <>
       <nav className="navbar navbar-expand-sm navbar-dark">
       <NavLink className="navbar-brand d-flex" to="/home">
-        <h4>fiverr</h4>
+        <h4 className="logo">fiverr</h4>
         <span>
           <i className="fa fa-circle" aria-hidden="true"></i>
         </span>

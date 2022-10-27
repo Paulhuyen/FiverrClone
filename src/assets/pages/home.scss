@@ -3,21 +3,13 @@
     .carousel {
       position: initial;
       .carousel-inner {
-        background-image: url(../../../public/img/carousel/hero-andrea.webp);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 600px;
-        position: absolute;
-        top: 0%;
-        left: 0;
         .row {
           margin: 0;
           display: block;
           padding: 0 32px;
-          margin: 0 50px;
+          margin: 50px 50px 0 50px;
           transform: translateY(50%);
-          .col {
+          .col-left {
             width: 50%;
             padding: 0;
             .item {
@@ -92,6 +84,34 @@
               }
             }
           }
+          .col-right{
+            width: 50%;
+            padding: 0;
+            transform: translateY(150%);
+            text-align: center;
+            .item{
+              .item-left{
+                width: 50%;
+              }
+              .item-right{
+                width: 50%;
+                .rate{
+                  .svg-inline--fa{
+                    margin-right: 5px;
+                    color: $cl-star;
+                  }
+                }
+                p{
+                  color: $cl-text-white;
+                  font-size: $text-16;
+                  padding-top: 10px;
+                }
+                b{
+                  font-size: $text-16;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -99,8 +119,10 @@
 }
 
 .partners {
-  position: relative;
-  transform: translateY(350%);
+  position: absolute;
+  top: 680px;
+  left: 0;
+  width: 100%;
   background-color: $bg-ligthgray;
   padding: 20px;
   .container {

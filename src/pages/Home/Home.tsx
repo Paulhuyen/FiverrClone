@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StarOutlined,
   StarFilled,
@@ -6,12 +6,24 @@ import {
   StepForwardOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/configStore";
+import { getJobListByName } from "../../redux/reducers/ProducReducers";
 
 type Props = {
   title?: string;
 };
 
-export default function Home({ title }: Props) {
+export default function Home({title}: Props) {
+
+  const { arrJobList } = useSelector((state:RootState) => state.ProducReducers);
+  const dispatch: AppDispatch = useDispatch();
+  useEffect(() => {
+    // call api = action thunk
+    const actionApi = getJobListByName();
+    dispatch(actionApi);
+  }, []);
+
   return (
     <div>
       {/* CAROUSEL */}
@@ -22,12 +34,23 @@ export default function Home({ title }: Props) {
             className="carousel slide"
             data-bs-ride="carousel"
           >
-            <div id="product-carousel" className="carousel-inner">
-              {/* <img src="./img/carousel/hero-andrea.webp" alt="..." /> */}
-
+            <div
+              id="product-carousel"
+              className="carousel-inner"
+              style={{
+                backgroundImage: "url(./img/carousel/hero-gabrielle.webp)",
+                position: "absolute",
+                top: "0",
+                left: "0",
+                height: "680px",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
               {/* SEARCH */}
-              <div className="row">
-                <div className="col">
+              <div className="row d-flex">
+                <div className="col-left">
                   <div className="item">
                     <div className="title">
                       <p className="d-flex m-0">
@@ -57,6 +80,21 @@ export default function Home({ title }: Props) {
                     </div>
                   </div>
                 </div>
+                <div className="col-right">
+                  <div className="item d-flex">
+                    <div className="item-left"></div>
+                    <div className="item-right">
+                      <div className="rate">
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                      </div>
+                      <p>Gabrielle, <b>Video Editor</b></p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -66,26 +104,24 @@ export default function Home({ title }: Props) {
       {/* PARTNERS */}
       <section className="partners">
         <div className="container">
-            <ul className="d-flex">
-              <li>
-                Trusted by:
-              </li>
-              <li>
-                <img src="./img/facebook.png" alt="..." />
-              </li>
-              <li>
-                <img src="./img/google.png" alt="..." />
-              </li>
-              <li>
-                <img src="./img/netflix.png" alt="..." />
-              </li>
-              <li>
-                <img src="./img/P&G.png" alt="..." />
-              </li>
-              <li>
-                <img src="./img/paypal.png" alt="..." />
-              </li>
-            </ul>
+          <ul className="d-flex">
+            <li>Trusted by:</li>
+            <li>
+              <img src="./img/facebook.png" alt="..." />
+            </li>
+            <li>
+              <img src="./img/google.png" alt="..." />
+            </li>
+            <li>
+              <img src="./img/netflix.png" alt="..." />
+            </li>
+            <li>
+              <img src="./img/P&G.png" alt="..." />
+            </li>
+            <li>
+              <img src="./img/paypal.png" alt="..." />
+            </li>
+          </ul>
         </div>
       </section>
     </div>

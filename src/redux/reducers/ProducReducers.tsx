@@ -3,7 +3,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { http } from "../../util/settings";
 import { AppDispatch } from "../configStore";
 
-export interface ProductModel {
+export interface JobsList {
+  id: number;
+  congViec: ProductModel;
+  tenLoaiCongViec: string;
+  tenNhomChiTietLoai: string;
+  tenChiTietLoai: string;
+  tenNguoiTao: string;
+  avatar: string;
+}
+
+export interface ProductModel { //congViec
   id:                    number;
   tenCongViec:           string;
   danhGia:               number;
@@ -14,7 +24,9 @@ export interface ProductModel {
   maChiTietLoaiCongViec: number;
   moTaNgan:              string;
   saoCongViec:           number;
+
 }
+
 export interface menuModel {
   id:                number;
   tenLoaiCongViec:   string;
@@ -37,6 +49,7 @@ export interface DsChiTietLoai {
 const initialState: any = {
   jobCategories: [],
   menuLoaiCV: [],
+  arrJobList: [],
 };
 
 const ProducReducers = createSlice({
@@ -49,16 +62,25 @@ const ProducReducers = createSlice({
     ) => {
       state.jobCategories = action.payload;
     },
+
     getAllMenuLoaiCVAction: (state, action: PayloadAction<ProductModel[]>) => {
       state.menuLoaiCV = action.payload;
     },
+
+    getJobListByNameAction: (state, action: PayloadAction<JobsList[]>) => {
+      state.arrJobList = action.payload;
+    },
+
   },
 });
 
-export const { getAllChiTietLoaiCVAction, getAllMenuLoaiCVAction } =
+export const { getAllChiTietLoaiCVAction, getAllMenuLoaiCVAction, getJobListByNameAction } =
   ProducReducers.actions;
 
 export default ProducReducers.reducer;
+
+
+// -------------- API --------------------------
 
 export const getAllMenuLoaiCV = () => {
   return async (dispatch: AppDispatch) => {
@@ -85,6 +107,21 @@ export const getAllChiTietLoaiCV = (id:number) => {
       dispatch(action);
       console.log("list categories", jobCategories);
     } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getJobListByName = (tenCongViec:string) => {
+  return async (dispatch: AppDispatch) => {
+    try{
+      const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${tenCongViec}`);
+      // Push to redux after getting the result(s)
+      let arrJobList: JobsList[] = result.data.content;
+      const action = getJobListByNameAction(arrJobList);
+      dispatch(action);
+      console.log('Jobs List', arrJobList);
+    } catch (err){
       console.log(err);
     }
   };

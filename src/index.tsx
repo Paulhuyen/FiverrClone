@@ -19,6 +19,7 @@ root.render(
       <Routes>
         <Route path='' element={<HomeTemplate/>}>
           <Route index element={<Home/>}></Route>
+          <Route path='home' element={<Home/>}></Route>
           <Route path='detailCate'>
             <Route path=':id'  element={<DetailCategories/>}></Route>
           </Route>
