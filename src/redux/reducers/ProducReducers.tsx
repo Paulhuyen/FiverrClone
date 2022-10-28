@@ -112,17 +112,17 @@ export const getAllChiTietLoaiCV = (id:number) => {
   };
 };
 
-export const getJobListByName = (tenCongViec:string) => {
-  return async (dispatch: AppDispatch) => {
-    try{
-      const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${tenCongViec}`);
-      // Push to redux after getting the result(s)
-      let arrJobList: JobsList[] = result.data.content;
-      const action = getJobListByNameAction(arrJobList);
-      dispatch(action);
-      console.log('Jobs List', arrJobList);
-    } catch (err){
-      console.log(err);
-    }
-  };
-};
+// export const getJobListByName = (keyword?:string) => {
+//   return async (dispatch: AppDispatch) => {
+//     try{
+//       const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${keyword}`);
+//       // Push to redux after getting the result(s)
+//       let arrJobList: JobsList[] = result.data.content;
+//       const action = getJobListByNameAction(arrJobList);
+//       dispatch(action);
+//       console.log('Jobs List', arrJobList);
+//     } catch (err){
+//       console.log(err);
+//     }
+//   };
+// };

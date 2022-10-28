@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   StarOutlined,
   StarFilled,
@@ -6,24 +6,13 @@ import {
   StepForwardOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/configStore";
-import { getJobListByName } from "../../redux/reducers/ProducReducers";
+import Search from "../Search/Search";
 
 type Props = {
   title?: string;
 };
 
 export default function Home({title}: Props) {
-
-  const { arrJobList } = useSelector((state:RootState) => state.ProducReducers);
-  const dispatch: AppDispatch = useDispatch();
-  useEffect(() => {
-    // call api = action thunk
-    const actionApi = getJobListByName();
-    dispatch(actionApi);
-  }, []);
-
   return (
     <div>
       {/* CAROUSEL */}
@@ -49,53 +38,8 @@ export default function Home({title}: Props) {
               }}
             >
               {/* SEARCH */}
-              <div className="row d-flex">
-                <div className="col-left">
-                  <div className="item">
-                    <div className="title">
-                      <p className="d-flex m-0">
-                        <h1>Find the perfect</h1>
-                        <i>freelance</i>
-                      </p>
-                      <h1>services for your business</h1>
-                    </div>
-                    <div className="search mt-4">
-                      <form className="form" action="">
-                        <span className="icon">
-                          <i className="fa fa-search" aria-hidden="true"></i>
-                        </span>
-                        <input
-                          type="text"
-                          placeholder='Try "building mobile app"'
-                        />
-                        <button>Search</button>
-                      </form>
-                    </div>
-                    <div className="popular d-flex mt-4">
-                      <span>Popular:</span>
-                      <a href="#">Website Design</a>
-                      <a href="#">WordPress</a>
-                      <a href="#">Logo Design</a>
-                      <a href="#">Video Editing</a>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-right">
-                  <div className="item d-flex">
-                    <div className="item-left"></div>
-                    <div className="item-right">
-                      <div className="rate">
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                      </div>
-                      <p>Gabrielle, <b>Video Editor</b></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Search/>
+              
             </div>
           </div>
         </div>
