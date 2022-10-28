@@ -7,6 +7,7 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import Search from "../Search/Search";
+import WorkingIndustries from "../WorkingIndustries/WorkingIndustries";
 
 type Props = {
   title?: string;
@@ -68,6 +69,32 @@ export default function Home({title}: Props) {
           </ul>
         </div>
       </section>
+
+      {/* WORKING INDUSTRIES */}
+      <WorkingIndustries/>
+      {/* <section className="popular-services">
+        <div className="container">
+          <h2>Popular professional services</h2>
+          <div className="owl-carousel owl-theme">
+          <div className="item">
+              <h4>1</h4>
+            </div>
+            <div className="item">
+              <h4>2</h4>
+            </div>
+            <div className="item">
+              <h4>3</h4>
+            </div>
+            <div className="item">
+              <h4>4</h4>
+            </div>
+            <div className="item">
+              <h4>5</h4>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
     </div>
   );
 }

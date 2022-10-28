@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, } from "react";
-import { useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import { http } from "../../util/settings";
 
 type Props = {};
@@ -54,13 +54,17 @@ export default function Search({}: Props) {
               <h1>services for your business</h1>
             </div>
             <div className="search mt-4">
-              <form className="form" action="" onSubmit={handleSubmit}>
+              
+                <form className="form" action="" onSubmit={handleSubmit}>
                 <span className="icon">
                   <i className="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <input type="text" placeholder='Try "building mobile app"' onChange={handleChange} />
-                <button>Search</button>
+                <NavLink to="/danh-sach-cong-viec">
+                    <button>Search</button>
+                </NavLink>
               </form>
+              
             </div>
             <div className="popular d-flex mt-4">
               <span>Popular:</span>
