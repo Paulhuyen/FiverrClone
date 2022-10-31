@@ -129,16 +129,119 @@ export default function WorkingIndustries({}: Props) {
             <div className="col">
               <div className="item">
                 <img src="./img/Info.webp" alt="..." />
-                <div className="play-icon">
-                  {/* <i className="fa fa-play-circle" aria-hidden="true"></i> */}
-                  <i className="fa fa-play" aria-hidden="true"></i>
+                <div className="play-video">
+                  <div className="play-icon">
+                    <i className="fa fa-play" aria-hidden="true"></i>
+                  </div>
+                  <div className="circle-icon">
+                    <i className="fa fa-circle" aria-hidden="true"></i>
+                  </div>
                 </div>
-                <div className="circle-icon">
-                  <i className="fa fa-circle" aria-hidden="true"></i>
-                </div>
-                <div></div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Marketplace */}
+      <section className="marketplace">
+        <div className="container">
+          <div className="comments">
+            <div className="row">
+              <div className="col">
+                <div className="item">
+                  <img src="./img/Teaser.webp" alt="..." />
+                  <div className="play-video">
+                    <div className="play-icon">
+                      <i className="fa fa-play" aria-hidden="true"></i>
+                    </div>
+                    <div className="circle-icon">
+                      <i className="fa fa-circle" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="item">
+                  <div className="top d-flex">
+                    <p>Kay Kim, Co-Founder</p>
+                    <span>
+                      <b>rooted</b>
+                    </span>
+                  </div>
+                  <div className="bottom">
+                    <p>
+                      "It's extremely exciting that Fiverr has freelancers from
+                      all over the world — it broadens the talent pool. One of
+                      the best things about Fiverr is that while we're sleeping,
+                      someone's working."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="explore-marketplace">
+            <h2>Explore the marketplace</h2>
+            <ul>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/graphics.svg" alt="..." />
+                  <span>Graphics & Design</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/marketing.svg" alt="..." />
+                  <span>Digital Marketing</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img
+                    src="./img/marketplace/writing-translation.svg"
+                    alt="..."
+                  />
+                  <span>Writing & Translation</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/video-animation.svg" alt="..." />
+                  <span>Video & Animation</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/music-radio.svg" alt="..." />
+                  <span>Music & Audio</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/programming.svg" alt="..." />
+                  <span>Programming & Tech</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/business.svg" alt="..." />
+                  <span>Business</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/lifestyle.svg" alt="..." />
+                  <span>Lifestyle</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="./img/marketplace/data.svg" alt="..." />
+                  <span>Data</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
