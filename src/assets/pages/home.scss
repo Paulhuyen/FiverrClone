@@ -1,3 +1,4 @@
+// Carousel + Search
 .slider {
   .container {
     .carousel {
@@ -43,7 +44,7 @@
                   border: solid 1px white;
                   border-right: none;
                   border-left: none;
-                  &:focus-visible{
+                  &:focus-visible {
                     outline: none;
                   }
                 }
@@ -84,29 +85,29 @@
               }
             }
           }
-          .col-right{
+          .col-right {
             width: 50%;
             padding: 0;
             transform: translateY(150%);
             text-align: center;
-            .item{
-              .item-left{
+            .item {
+              .item-left {
                 width: 50%;
               }
-              .item-right{
+              .item-right {
                 width: 50%;
-                .rate{
-                  .svg-inline--fa{
+                .rate {
+                  .svg-inline--fa {
                     margin-right: 5px;
                     color: $cl-star;
                   }
                 }
-                p{
+                p {
                   color: $cl-text-white;
                   font-size: $text-16;
                   padding-top: 10px;
                 }
-                b{
+                b {
                   font-size: $text-16;
                 }
               }
@@ -118,6 +119,7 @@
   }
 }
 
+// Partners
 .partners {
   position: absolute;
   top: 680px;
@@ -134,6 +136,134 @@
         color: #b5b6ba;
         font-weight: $f-weight-600;
         font-size: $text-16;
+      }
+    }
+  }
+}
+
+.working-industries {
+  position: relative;
+  top: 630px;
+  left: 0;
+
+  // Popular Services
+  .popular-services {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    .container {
+      padding-left: 32px;
+      padding-right: 32px;
+      margin-left: 50px;
+      margin-right: 50px;
+      h2 {
+        color: $c2-text-black;
+        font-weight: $f-weight-700;
+        margin-bottom: 30px;
+      }
+      .row {
+        a {
+          display: inline-block;
+          width: 20%;
+          .col {
+            .item {
+              position: relative;
+              img {
+                width: 100%;
+              }
+              .title {
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: $cl-text-white;
+                padding: 16px;
+                p {
+                  font-size: $text-14;
+                  font-weight: $f-weight-400;
+                  margin-bottom: 5px;
+                }
+                h4 {
+                  font-size: $text-20;
+                  font-weight: $f-weight-700;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Freelance Info
+  .freelance-info {
+    background-color: $bg-freelance-info;
+    .container {
+      padding-left: 32px;
+      padding-right: 32px;
+      margin-left: 50px;
+      margin-right: 50px;
+      .row {
+        padding: 70px 0;
+        .col {
+          .item {
+            h2 {
+              color: $c2-text-black;
+              font-weight: $f-weight-700;
+              margin-bottom: 30px;
+            }
+            .details {
+              ul {
+                padding: 0;
+              }
+              .detail-item {
+                li {
+                  display: flex;
+                  .svg-inline--fa {
+                    font-size: 23px;
+                    border: 1px solid;
+                    border-radius: 50%;
+                    padding: 3px;
+                  }
+                  h6 {
+                    padding-left: 10px;
+                    font-size: $text-18;
+                    color: $c2-text-black;
+                    font-weight: $f-weight-700;
+                  }
+                }
+                p {
+                  font-size: $text-18;
+                  color: $c2-text-grey;
+                }
+              }
+            }
+            img {
+              position: relative;
+            }
+            .play-icon {
+              .svg-inline--fa {
+                font-size: $text-30;
+                opacity: 1;
+                position: absolute;
+                top: 61%;
+                left: 70%;
+                transform: translate(130%, 110%);
+                color: $cl-text-white;
+                z-index: 1;
+              }
+            }
+            .circle-icon{
+              .svg-inline--fa{
+                font-size: 75px;
+                opacity: 0.5;
+                position: absolute;
+                top: 55%;
+                left: 65%;
+                transform: translate(100%, 100%);
+                color: $cl-text-black;
+              }
+            }
+          }
+        }
       }
     }
   }
