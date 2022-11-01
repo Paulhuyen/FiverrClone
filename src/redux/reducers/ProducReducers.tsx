@@ -1,9 +1,9 @@
 //rxslice
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { http, setStoreJson } from "../../util/settings";
-// import {http } from "../../util/settings";
+import { ACCESS_TOKEN, getStore, http, setStoreJson, USER_LOGIN } from "../../util/settings";
 import { AppDispatch } from "../configStore";
+import { ThueCongViecModal } from "../models/jobModel";
 
 
 //Menu
@@ -70,20 +70,20 @@ export interface Job {
   saoCongViec:           number;
 }
 
+// interface TypeArrayJob {
+//   arrayJob: Job[],
+//   arrayJobDetail: JobDetail[],
+//   arrayJobMenu:JobMenu[],
+//   arrJobCategories:JobCategories[],
+//   congViecDaThue: ThueCongViecModal[]
 
-
-interface TypeArrayJob {
-  arrayJob: Job[],
-  arrayJobDetail: JobDetail[],
-  arrayJobMenu:JobMenu[],
-  arrJobCategories:JobCategories[],
-
-}
-const initialState:TypeArrayJob={
-   arrayJob:[],
+// }
+const initialState:any={
+  arrayJob:[],
   arrayJobDetail:[],
   arrayJobMenu:[],
   arrJobCategories:[],
+  congViecDaThue:[]
 
 } 
 
@@ -107,12 +107,15 @@ const ProducReducers = createSlice({
     getJobCateAction: (state,action: PayloadAction<JobCategories[]> ) => {
       state.arrJobCategories = action.payload;
       setStoreJson("arrJobCategories",state.arrJobCategories);
+    },
+    getCongViecDaThueAction:(state,action: PayloadAction<ThueCongViecModal[]> )=>{
+      state.congViecDaThue = action.payload;
     }
 
   }
 });
 
-export const { getArrayProduct,getArrayProductDetail,getJobMenuAction,getJobCateAction } = ProducReducers.actions;
+export const { getArrayProduct,getArrayProductDetail,getJobMenuAction,getJobCateAction,getCongViecDaThueAction } = ProducReducers.actions;
 
 export default ProducReducers.reducer;
 
@@ -160,11 +163,28 @@ export const getJobCate = (id:any)=> {
   return async (dispatch: AppDispatch)=>{
       try {
           const response = await http.get(`/api/cong-viec/lay-chi-tiet-loai-cong-viec/${id}`)
-          let arrJobCategories : JobCategories[] = response.data.content
+          let arrJobCategories : JobCategories[] = response.data.content;
+          console.log('reducer cate',arrJobCategories);
           const action = getJobCateAction(arrJobCategories);
-         dispatch(action);
+          setStoreJson("arrJobCategories",response.data.content);
+
+          dispatch(action);
       } catch (error) {
           
+      }
+  }
+}
+
+export const getCongViecApi = ()=> {
+  return async (dispatch: AppDispatch)=>{
+      try {
+          const response = await http.get('/api/thue-cong-viec/lay-danh-sach-da-thue')
+          let congViecDaThue : ThueCongViecModal[] = response.data.content;
+          console.log(response)
+          const action = getCongViecDaThueAction(congViecDaThue);
+         dispatch(action);
+      } catch (error) {
+          console.log(error)
       }
   }
 }

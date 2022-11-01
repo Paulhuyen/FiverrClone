@@ -43,6 +43,10 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        h4{
+          margin-bottom: 0;
+          font-weight: $f-weight-600;
+        }
         .ft-left{
             gap: 20px;
             font-size: $text-14;
@@ -52,6 +56,10 @@
         }
         .ft-right{
             gap: 20px;
+            span:hover{
+              color: $cl-hover-1;
+
+            }
         }
       }
     }

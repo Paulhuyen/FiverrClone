@@ -5,14 +5,15 @@
 //  Pages
 @import "./pages/profile.scss";
 @import "./pages/jobdetail.scss";
-// @import "./pages/category.scss";
-@import "./pages/menuPages.scss";
-@import "./pages/headerCategories.scss";
+@import "./pages/menuHeader/menuHeader.scss";
+@import "./pages/categories/headerCategories.scss";
 @import "./components/footer.scss";
 // admin
 @import "./Admin/home.scss";
 @import "./Admin/managenment.scss";
 @import "./Admin/table.scss";
+@import "./Admin/formAction.scss";
+@import "./Admin//modalManageUser.scss";
 //  Components
 @import './components//formModal.scss'
 

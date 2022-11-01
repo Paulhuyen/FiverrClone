@@ -11,11 +11,19 @@ import DetailCategories from './pages/Categories/DetailCategories';
 import Profile from './pages/Profile/Profile';
 import Detail from './pages/Detail/Detail';
 import DemoProduct from './pages/Demo/DemoProduct';
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
 //Admin
 import AdminTemplate from './templates/AdminTemplate';
 import ManageUser from './pages/AdminPages/ManageUser/ManageUser';
 import ManageJob from './pages/AdminPages/ManageJob/ManageJob';
 import ManageJobType from './pages/AdminPages/ManageJobType.tsx/ManageJobType';
+import LoginDemo from './pages/LoginDemo/LoginDemo';
+import ModalManageUser from './HOC/ModalUpdate/ModalManageUser';
+
+
+export const history = createBrowserHistory({ window });
 
 
 const root = ReactDOM.createRoot(
@@ -23,7 +31,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path='' element={<HomeTemplate/>}>
           <Route index element={<Home/>}></Route>
@@ -35,6 +43,8 @@ root.render(
             <Route path=':id' element={<Detail/>}></Route>
           </Route>
           <Route path='profile' element={<Profile/>}></Route>
+          <Route path='logindemo' element={<LoginDemo/>}></Route>
+          <Route path='modaluser' element={<ModalManageUser/>}></Route>
           <Route path='*' element={<Navigate to=""/>}></Route>
         </Route>
         <Route path='admin' element={<AdminTemplate/>}>
@@ -43,7 +53,7 @@ root.render(
            <Route path='managenmentjobtype' element={<ManageJobType/>}></Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   </Provider>
 );
 

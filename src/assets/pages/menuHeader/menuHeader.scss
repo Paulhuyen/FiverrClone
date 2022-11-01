@@ -1,0 +1,106 @@
+@import "../../themes/variable";
+@import "../../base/base";
+
+
+.header-fiverr{
+    position: relative;
+    z-index: 100;
+    .header-wrapper{
+        display: flex;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        .logo{
+            img{
+                width: 90px;
+            }
+        }
+        .fiverr-header-search{
+            .ip-search{
+               width: 380px;
+            }
+        }
+        .fiverr-nav-right{
+            ul{
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            li{
+                margin-right: 24px;
+                a{
+                    color: $cl-text;
+                }
+                a:hover{
+                    color: $cl-hover-1;
+                }
+            }
+
+            }
+
+        }
+    }
+}
+.menu-pages{
+    border-top: 1px solid $bg-profile-border;
+    border-bottom: 1px solid $bg-profile-border;
+    margin: 10px 0  20px 0;
+    .menu-cate{
+        ul{
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            padding-left: 0;
+            li{
+                padding: 10px;
+                position: relative;
+                a{
+                    color:$cl-text ;
+                }
+                a:hover{
+                    color: $cl-hover-1;
+                }
+                .sub-menu{
+                    position: absolute;
+                    left: -20px;
+                    top: 47px;
+                    display: none;
+                    z-index: 99;
+                    ul{
+                        z-index: 20;
+                        border: 1px solid rgb(122, 122, 122);
+                        padding: 0px 20px;
+                        display: grid;
+                        grid-template-columns: auto auto auto;
+                        background-color: white;
+                        li{
+                            min-width: 300px;
+                            height: auto;
+                            a{
+                                display: block;
+                                p{
+                                    padding-bottom: 0;
+                                }
+                            }
+                            .tenNhom{
+                                font-weight: $f-weight-700;
+                                color: $cl-text-black;
+                                margin-bottom: 5px;
+                            }
+                            a:hover{
+                                color: $cl-hover-1;
+                            }
+                        }
+                    }
+                }
+            }
+            li:hover >.sub-menu{
+                display: block;
+            }
+            li:last-child:hover.sub-menu{
+                background-color: red;
+                color: red;
+            }
+        }
+    }
+}

@@ -1,31 +1,31 @@
 import React, { useEffect } from "react";
-import { ArrowRightOutlined } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-// import { ProductModel,DsNhomChiTietLoai, getAllChiTietLoaiCV, DsChiTietLoai} from "../../redux/reducers/ProducReducers";
-import { AppDispatch } from "../../redux/configStore";
+import { ArrowRightOutlined, RightOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { AppDispatch  } from "../../redux/configStore";
 import { useParams } from "react-router-dom";
 import { getStoreJson } from "../../util/settings";
+// import Slider from 'react-slick'
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
 import {
   DsChiTietLoai,
   DsNhomChiTietLoai,
-  getJobCate,
+  getJobCate
 } from "../../redux/reducers/ProducReducers";
 
 export default function DetailCategories() {
-  const jobListDetail = getStoreJson("arrJobCategories");
+  const arrJobCategories = getStoreJson("arrayJobMenu");
   const dispatch: AppDispatch = useDispatch();
   const params = useParams();
-  console.log(params);
 
   useEffect(() => {
     let { id } = params;
     const action: any = getJobCate(id);
-    // console.log(action);
     dispatch(action);
   }, [params.id]);
 
   const renderJobCategories = () => {
-    return jobListDetail[0].dsNhomChiTietLoai?.map(
+    return arrJobCategories[0].dsNhomChiTietLoai?.map(
       (item: DsNhomChiTietLoai) => {
         return (
           <div className="item-job" key={item.id}>
@@ -52,13 +52,22 @@ export default function DetailCategories() {
       }
     );
   };
+// slider
+
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 3
+  // };
 
   return (
     <div className="Header-Categories">
       <div className="container">
         <div className="banner-category bg-dark">
           <div className="banner-page">
-            <img src="./img/banner.webp" alt="" />
+            <img src="https://fiverr-res.cloudinary.com/image/upload/f_a…afd38cf-1626595415203/graphics-design-desktop.png" alt="" />
             <div className="banner-content">
               <h3 className="title">Graphics & Design</h3>
               <p className="subtitle">Designs to make you stand out.</p>
@@ -68,9 +77,78 @@ export default function DetailCategories() {
             </div>
           </div>
         </div>
+        <div className="carousel-section">
+          <div className="control-wrapper">
+            <div className="control-wrapper_left"><h3>Most popular in {arrJobCategories[0].tenLoaiCongViec}</h3></div>
+            <div className="control-wrapper_right">ok se</div>
+          </div>
+          <div className="slides-list">
+            <div className="item-slider">
+               <a href=""><img src="/img/item-cr1.webp" alt="" /></a>
+               <span className="title">Video Editing</span>
+               <span className="icon-right"><ArrowRightOutlined /></span>
+            </div>
+            <div className="item-slider">
+               <a href=""><img src="/img/item-cr2.webp" alt="" /></a>
+               <span className="title">Video Editing</span>
+               <span className="icon-right"><ArrowRightOutlined /></span>
+            </div>
+            <div className="item-slider">
+               <a href=""><img src="/img/item-cr4.webp" alt="" /></a>
+               <span className="title">Video Editing</span>
+               <span className="icon-right"><ArrowRightOutlined /></span>
+
+            </div>
+            <div className="item-slider">
+               <a href=""><img src="/img/item-cr1.webp" alt="" /></a>
+               <span className="title">Video Afs & Commerclals</span>
+               <span className="icon-right"><ArrowRightOutlined /></span>
+
+            </div>
+            {/* <div className="item-slider">
+               <a href=""><img src="/img/item-cr5.webp" alt="" /></a>
+               <span>Video Afs & Commerclals</span>
+               <span><RightOutlined /></span>
+            </div>
+            <div className="item-slider">
+               <a href=""><img src="/img/item-cr3.webp" alt="" /></a>
+               <span>Video Editing</span>
+               <span><RightOutlined /></span>
+            </div> */}
+          {/* <Slider {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+          <div>
+            <h3>7</h3>
+          </div>
+          <div>
+            <h3>8</h3>
+          </div>
+          <div>
+            <h3>9</h3>
+          </div>
+          </Slider> */}
+          </div>
+        </div>
         {/* show list job */}
         <div className="header-job">
-          <h4 className="text-title">{jobListDetail.tenLoaiCongViec}</h4>
+          <h4 className="text-title">{arrJobCategories[0].tenLoaiCongViec}</h4>
           <div className="list-job row">
             {renderJobCategories()}
             {/*  */}

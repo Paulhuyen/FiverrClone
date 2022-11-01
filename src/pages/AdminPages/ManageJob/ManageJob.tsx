@@ -1,50 +1,82 @@
-import { SearchOutlined } from '@ant-design/icons'
-import React from 'react'
+import { DeleteOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
+import React, { useState,useEffect } from 'react'
 import FormJob from '../../../components/Form/FormJob'
-
+import "antd/dist/antd.css";
+import {Button, Drawer, Space, Table} from "antd";
+import { ColumnsType } from 'antd/lib/table';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/configStore';
+import { getAllJobTypeApi } from '../../../redux/reducers/AdminManageJobReducer';
+import ModalAddJobType from '../../../HOC/ModalAdd/ModalAddJobType';
 type Props = {}
 
+interface DataType {
+  id: string;
+  tenLoaiCongViec: string;
+}
 export default function ManageJob({}: Props) {
+  const dispatch = useDispatch();
+  const {arrJobType} = useSelector((state: RootState)=> state.AdminManageJobReducer);
+  console.log('arr',arrJobType)
+  useEffect(()=> {
+    const action:any = getAllJobTypeApi();
+    dispatch(action)
+  },[])
+  const columns:ColumnsType<DataType> = [
+    {
+      key:'1',
+      title:'ID',
+      dataIndex:'id'
+    },
+    {
+      key:'2',
+      title:'Tên Loại Công Việc',
+      dataIndex:'tenLoaiCongViec'
+    },
+    {
+      key:'3',
+      title:'action',
+      dataIndex:'action',
+      render: (_, { id }) => (
+        <div className='btn_action'>
+          <button className='btn btn-danger mx-2'><DeleteOutlined /></button>
+          <button className='btn btn-primary mx-2'><SettingOutlined /></button>
+        </div>
+      )
+    },
+  ]
+  //modal
+  const [open, setOpen] = useState(false);
+  // const [size, setSize] = useState<DrawerProps['size']>();
+
+  const showDefaultDrawer = () => {
+    setOpen(true);
+  };
+
+  const showLargeDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
     <div className='main'>
-    <main>
-       <FormJob/>
-    </main>
-    <header>
-      <div className="search">
-        <input type="text"  placeholder='Tìm Kiếm'/>
-        <button className='btn-search'><SearchOutlined /></button>
-      </div>
-      <div className='show-table'>
-        <table className='table table-bordered table-striped' border={1}>
-          <thead className='bg-secondary'>
-            <tr>
-              <th>id</th>
-              <th>Name</th>
-              <th>img</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Role</th>
-              <th>Setting</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Hoàng</td>
-              <td><img src="./img/avt.jpg" style={{width:50, height:50, objectFit:'cover'}} alt="" /></td>
-              <td>Paul@gmail.com</td>
-              <td>0123456799</td>
-              <td>admin</td>
-              <td>
-                <button className='btn btn-danger mx-2'>Delete</button>
-                <button className='btn btn-primary mx-2'>Edit</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </header>
+      <main>
+      <Button type="primary" onClick={showDefaultDrawer}>
+          Thêm Loại Công Việc
+       </Button>
+       <Drawer
+        title="Thêm Loại Công Việc"
+        width={720}
+        onClose={onClose}
+        open={open}
+        bodyStyle={{ paddingBottom: 80 }}
+      >
+      <ModalAddJobType/>
+      </Drawer>
+      </main>
+              <Table columns={columns} dataSource={arrJobType}>
+              </Table>
   </div>
   )
 }

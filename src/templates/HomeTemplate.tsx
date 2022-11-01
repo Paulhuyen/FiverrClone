@@ -9,7 +9,7 @@ type Props = {}
 export default function HomeTemplate({}: Props) {
   return (
     <>
-      <Header/>
+      {/* <Header/> */}
       <MenuPages/>
       <Outlet/>
       <Footer/>

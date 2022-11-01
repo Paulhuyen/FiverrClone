@@ -1,14 +1,17 @@
 import {configureStore, PayloadAction} from '@reduxjs/toolkit';
+import AdminManageJobReducer from './reducers/AdminManageJobReducer';
 import CommentReducer from './reducers/CommentReducer';
-import drawerReducer from './reducers/drawerReducer';
 import ProducReducers from './reducers/ProducReducers';
+import UserReducer from './reducers/UserReducer';
 
 
 export const store = configureStore({
     reducer: {
         ProducReducers:ProducReducers,
         CommentReducer:CommentReducer,
-        drawerReducer:drawerReducer,
+        UserReducer:UserReducer,
+        AdminManageJobReducer:AdminManageJobReducer,
+
     }
 })
 

@@ -15,11 +15,9 @@ export default function Detail({}: Props) {
   const params = useParams();
   const [index,setIndex] = useState(0);
   const { arrayListComment } = useSelector( (state: RootState) => state.CommentReducer);
-  console.log('comment',arrayListComment)
 
   const titleDetail = getStoreJson("arrayJobDetail");
   const ListCommentReveiw = getStoreJson("arrayListComment")
-  console.log("danh sách cm",ListCommentReveiw)
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {

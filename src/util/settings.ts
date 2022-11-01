@@ -42,11 +42,11 @@ export const config = {
   },
   ACCESS_TOKEN: 'accessToken',
   USER_LOGIN: 'userLogin',
-  DETAILCATE_LIST: 'catedetail',
+  ID_USER:'id_User',
 
 };
 
-export const { setCookie,  getCookie,  getStore, setStore, setStoreJson, getStoreJson,ACCESS_TOKEN,USER_LOGIN,DETAILCATE_LIST } = config;
+export const { setCookie,  getCookie,  getStore, setStore, setStoreJson, getStoreJson,ACCESS_TOKEN,USER_LOGIN,ID_USER } = config;
 
 
 const DOMAIN = 'https://fiverrnew.cybersoft.edu.vn';
@@ -65,7 +65,7 @@ http.interceptors.request.use(
     const token = getStore(ACCESS_TOKEN);
     config.headers = {
       ...config.headers,
-      ['Authorization']: `Bearer ${token}`,
+      ['token']: `${token}`,
       ['TokenCybersoft']: TOKEN_CYBERSOFT,
     };
     return config;
