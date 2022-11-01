@@ -49,15 +49,16 @@ footer {
                     font-size: $text-16;
                   }
                   &:hover{
-                    opacity: 1;
-                    transition: all 0.3s;
-                  }
+                      opacity: 1;
+                      transition: all 0.3s;
+                    }
                 }
               }
             }
           }
           .col {
             .item{
+              justify-content: space-between;
               h6{
                   color: $c2-text-black;
                   font-weight: $f-weight-700;
@@ -80,12 +81,15 @@ footer {
                     }
                   }
               }
-              span{
-                font-size: $text-26;
-                font-weight: $f-weight-700;
-              }
-              .svg-inline--fa{
-                font-size: x-small;
+              a{
+                color: $c2-text-grey;
+                span{
+                  font-size: $text-26;
+                  font-weight: $f-weight-700;
+                }
+                .svg-inline--fa{
+                  font-size: x-small;
+                }
               }
               p{
                 display: inline-block;

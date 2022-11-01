@@ -177,8 +177,10 @@ export default function Footer({}: Props) {
         <div className="row">
           <div className="col col-left">
             <div className="item">
-              <span>fiverr</span>
-              <i className="fa fa-registered" aria-hidden="true"></i>
+              <NavLink to="/home">
+                <span>fiverr</span>
+                <i className="fa fa-registered" aria-hidden="true"></i>
+              </NavLink>
               <p>© Fiverr International Ltd. 2022</p>
             </div>
           </div>
