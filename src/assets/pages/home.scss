@@ -265,9 +265,9 @@
   }
 }
 
-// Marketplace
+  // Marketplace
 .marketplace{
-  border-bottom: 1px solid;
+  border-bottom: 1px solid $cl-text-grey;
   .container{
     margin-left: 50px;
     margin-right: 50px;
@@ -343,6 +343,9 @@
               margin: 0 auto 15px;
               display: block;
               border-bottom: 1px solid;
+              &:hover{
+                border-bottom: 2px solid $cl-cart;
+              }
             }
           }
         }
