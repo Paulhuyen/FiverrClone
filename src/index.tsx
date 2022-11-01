@@ -8,7 +8,7 @@ import Home from './pages/Home/Home';
 import { store } from './redux/configStore';
 import HomeTemplate from './templates/HomeTemplate';
 import DetailCategories from './pages/Categories/DetailCategories';
-import DanhSachCongViec from './pages/DanhSachCongViec/DanhSachCongViec';
+import JobList from './pages/JobList/JobList';
 
 
 const root = ReactDOM.createRoot(
@@ -21,7 +21,7 @@ root.render(
         <Route path='' element={<HomeTemplate/>}>
           <Route index element={<Home/>}></Route>
           <Route path='home' element={<Home/>}></Route>
-          <Route path='danh-sach-cong-viec' element={<DanhSachCongViec/>}></Route>
+          <Route path='job-list' element={<JobList/>}></Route>
           <Route path='detailCate'>
             <Route path=':id'  element={<DetailCategories/>}></Route>
           </Route>

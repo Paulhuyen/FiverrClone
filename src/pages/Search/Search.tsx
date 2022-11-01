@@ -60,7 +60,7 @@ export default function Search({}: Props) {
                   <i className="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <input type="text" placeholder='Try "building mobile app"' onChange={handleChange} />
-                <NavLink to="/danh-sach-cong-viec">
+                <NavLink to="/job-list">
                     <button>Search</button>
                 </NavLink>
               </form>
