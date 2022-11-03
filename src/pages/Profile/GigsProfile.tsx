@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/configStore';
 import { ThueCongViecModal } from '../../redux/models/jobModel';
-import { getCongViecApi } from '../../redux/reducers/ProducReducers';
+import { deleteThueCongViecApi, getCongViecApi } from '../../redux/reducers/ProducReducers';
 import { getUserApi } from '../../redux/reducers/UserReducer';
+import { Modal } from 'antd';
+import { getIdJob } from '../../redux/reducers/AdminManageJobReducer';
 
 type Props = {}
 
@@ -18,6 +20,20 @@ export default function GigsProfile({}: Props) {
       useEffect(() => {
         dispatch(getUserApi());
      }, []);
+    //open modal thuê công việc
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+      setIsModalOpen(true);
+    };
+  
+    const handleOk = () => {
+      setIsModalOpen(false);
+    };
+  
+    const handleCancel = () => {
+      setIsModalOpen(false);
+    };
   return (
     <div className="gigs-column col-8">
     <div className="gigs-prod">
@@ -33,7 +49,17 @@ export default function GigsProfile({}: Props) {
                     <div className="prod-footer d-flex">
                         <div className="btn-detail btn">View detail</div>
                         <div className="btn-edit btn" >Edit</div>
-                        <div className=" btn">X</div>
+                        <div className=" btn" onClick={showModal}>X</div>
+                        <Modal title="Bạn Muốn Huỷ Công Việc Đang Thuê" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                              <div className='text-center'>
+                              <button className='btn btn-success mx-2' onClick={()=>{
+                                const action = deleteThueCongViecApi(congViecThue.id);
+                                dispatch(action)
+                              }}>Có</button>
+                              <button className='btn btn-danger mx-2' onClick={handleCancel}>Huỷ</button>
+                              </div>
+
+                        </Modal>
                     </div>
                 </div>
             </div>

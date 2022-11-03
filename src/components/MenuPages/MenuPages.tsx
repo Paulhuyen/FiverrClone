@@ -10,6 +10,7 @@ import { history } from '../../index';
 import {
   DsChiTietLoai,
   DsNhomChiTietLoai,
+  getJobCate,
   getJobMenu,
   JobMenu,
 } from "../../redux/reducers/ProducReducers";
@@ -27,7 +28,6 @@ export default function MenuPages({}: Props) {
     history.push('/home')
     dispatch(signOutAction(userLogin));
   }
-  console.log('alo',userLogin)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -41,6 +41,8 @@ export default function MenuPages({}: Props) {
           <a
             onClick={() => {
               navigate(`/categories/${menuPages.id}`);
+              const action:any = getJobCate(menuPages.id)
+              dispatch(action)
             }}
           >
             {menuPages.tenLoaiCongViec}

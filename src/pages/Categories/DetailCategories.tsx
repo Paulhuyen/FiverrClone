@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ArrowRightOutlined, RightOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import { AppDispatch  } from "../../redux/configStore";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState  } from "../../redux/configStore";
 import { useParams } from "react-router-dom";
 import { getStoreJson } from "../../util/settings";
 // import Slider from 'react-slick'
@@ -14,12 +14,17 @@ import {
 } from "../../redux/reducers/ProducReducers";
 
 export default function DetailCategories() {
-  const arrJobCategories = getStoreJson("arrayJobMenu");
+  const { arrJobCategories } = useSelector((state: RootState) => state.ProducReducers);
+  console.log(arrJobCategories)
+  // const arrayJobMenu = getStoreJson("arrJobCategories");
+  // let idThue = idJobCategories.id;
+  // console.log('id thuê',idThue)
   const dispatch: AppDispatch = useDispatch();
   const params = useParams();
-
+  console.log('params',params)
   useEffect(() => {
     let { id } = params;
+    console.log('catagories',id)
     const action: any = getJobCate(id);
     dispatch(action);
   }, [params.id]);
@@ -79,7 +84,7 @@ export default function DetailCategories() {
         </div>
         <div className="carousel-section">
           <div className="control-wrapper">
-            <div className="control-wrapper_left"><h3>Most popular in {arrJobCategories[0].tenLoaiCongViec}</h3></div>
+            <div className="control-wrapper_left"><h3>Most popular in {arrJobCategories.tenLoaiCongViec}</h3></div>
             <div className="control-wrapper_right">ok se</div>
           </div>
           <div className="slides-list">
@@ -148,7 +153,7 @@ export default function DetailCategories() {
         </div>
         {/* show list job */}
         <div className="header-job">
-          <h4 className="text-title">{arrJobCategories[0].tenLoaiCongViec}</h4>
+          <h4 className="text-title">{arrJobCategories.tenLoaiCongViec}</h4>
           <div className="list-job row">
             {renderJobCategories()}
             {/*  */}

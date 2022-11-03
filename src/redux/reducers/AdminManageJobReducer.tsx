@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { message } from "antd";
 import { http } from "../../util/settings";
 import { AppDispatch } from "../configStore";
 import { Job } from "../models/jobModel";
@@ -53,10 +54,11 @@ export const postJob = (value: any) => {
       let arrayJobAdmin: Job[] = response.data.content;
       const action = postJobAction(arrayJobAdmin);
       dispatch(action);
-      console.log("data add job", arrayJobAdmin);
-      alert("oke");
+      message.success('Thêm Thành Công');
+
     } catch (error) {
-      alert("err");
+      message.success('Thêm Thất Bại');
+
     }
   };
 };
@@ -65,6 +67,7 @@ export const deleteJob = (id: any) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await http.delete(`/api/cong-viec/${id}`);
+      message.success('Xoá Thành Công');
     } catch (error) {}
   };
 };
@@ -77,10 +80,7 @@ export const getIdJob = (id: any) => {
       let idJob: Job[] = response.data.content;
       const action = getIdJobAction(idJob);
       dispatch(action);
-      console.log("data add job", idJob);
-      alert("id thành công");
     } catch (error) {
-      alert("err id");
     }
   };
 };
@@ -89,10 +89,12 @@ export const updateIdJob= (data:any) => {
   return async (dispatch:AppDispatch) => {
       try {
           const response = await http.put(`/api/cong-viec/${data.id}`,data)
-          alert('update thành công');
+        message.success('Update Thành Công');
+
       }catch(err){
           console.log(err);
-          alert('update Thất bại')
+        message.error('Update Thất Bại');
+
       }
   }
 }

@@ -1,5 +1,6 @@
 //rxslice
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { message } from "antd";
 import axios from "axios";
 import { ACCESS_TOKEN, getStore, http, setStoreJson, USER_LOGIN } from "../../util/settings";
 import { AppDispatch } from "../configStore";
@@ -167,7 +168,6 @@ export const getJobCate = (id:any)=> {
           console.log('reducer cate',arrJobCategories);
           const action = getJobCateAction(arrJobCategories);
           setStoreJson("arrJobCategories",response.data.content);
-
           dispatch(action);
       } catch (error) {
           
@@ -184,6 +184,37 @@ export const getCongViecApi = ()=> {
          dispatch(action);
       } catch (error) {
           console.log(error)
+      }
+  }
+}
+
+//thuê công việc
+export const getThueCongViecApi = (data:any)=> {
+  return async (dispatch: AppDispatch)=>{
+      try {
+          const response = await http.post('/api/thue-cong-viec',data);
+          console.log(response.data.content)
+        message.success('Thuê Thành Công');
+
+      } catch (error) {
+        message.error('Thuê Không Thành Công');
+
+
+      }
+  }
+}
+
+export const deleteThueCongViecApi = (id:any)=> {
+  return async (dispatch: AppDispatch)=>{
+      try {
+          const response = await http.delete(`/api/thue-cong-viec/${id}`);
+          console.log(response.data.content)
+        message.success('Huỷ Thành Công');
+
+      } catch (error) {
+        message.error('Huỷ Không Thành Công');
+
+
       }
   }
 }
