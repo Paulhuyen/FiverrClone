@@ -17,10 +17,12 @@ import { createBrowserHistory } from "history";
 //Admin
 import AdminTemplate from './templates/AdminTemplate';
 import ManageUser from './pages/AdminPages/ManageUser/ManageUser';
-import ManageJob from './pages/AdminPages/ManageJob/ManageJob';
-import ManageJobType from './pages/AdminPages/ManageJobType.tsx/ManageJobType';
+import ManageJob from './pages/AdminPages/ManageJob/ManageTypeJob';
+import ManageJobType from './pages/AdminPages/ManageJobType.tsx/ManageJob';
 import LoginDemo from './pages/LoginDemo/LoginDemo';
 import ModalManageUser from './HOC/ModalUpdate/ModalManageUser';
+import ManageService from './pages/AdminPages/ManageService/ManageService';
+import ManageJobTypeDtail from './pages/AdminPages/ManageJobTypeDetail.tsx/ManageJobTypeDtail';
 
 
 export const history = createBrowserHistory({ window });
@@ -49,8 +51,10 @@ root.render(
         </Route>
         <Route path='admin' element={<AdminTemplate/>}>
            <Route index element={<ManageUser/>}></Route>
-           <Route path='managenmentjob' element={<ManageJob/>}></Route>
-           <Route path='managenmentjobtype' element={<ManageJobType/>}></Route>
+           <Route path='managenmentjobtype' element={<ManageJob/>}></Route>
+           <Route path='managenmentjob' element={<ManageJobType/>}></Route>
+           <Route path='manageService' element={<ManageService/>}></Route>
+           <Route path='managejobtypedetail' element={<ManageJobTypeDtail/>}></Route>
         </Route>
       </Routes>
     </HistoryRouter>

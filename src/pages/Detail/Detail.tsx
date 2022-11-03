@@ -9,12 +9,14 @@ import {
 } from "../../redux/reducers/ProducReducers";
 import { getStoreJson  } from "../../util/settings";
 import { getListComment, ListComment } from "../../redux/reducers/CommentReducer";
+import PriceDetail from "./PriceDetail";
 type Props = {};
 
 export default function Detail({}: Props) {
   const params = useParams();
   const [index,setIndex] = useState(0);
   const { arrayListComment } = useSelector( (state: RootState) => state.CommentReducer);
+  const { userLogin } = useSelector( (state: RootState) => state.UserReducer);
 
   const titleDetail = getStoreJson("arrayJobDetail");
   const ListCommentReveiw = getStoreJson("arrayListComment")
@@ -67,18 +69,29 @@ export default function Detail({}: Props) {
       )
     })
   }
+  const handleCheckOut = () => {
+    const data = {
+      id: 0,
+      maCongViec: titleDetail,
+      maNguoiThue: userLogin.id,
+      ngayThue: 'string',
+      hoanThanh: false,
+        }
+      // dispatch()
+  }
   const renderProductDetail = () => {
-    return titleDetail?.map((item: JobDetail, indexI: number) => {
+    return titleDetail?.map((item: JobDetail) => {
       return (
-        <div key={indexI}>
+        <div >
           <div className="row">
             <div className="main col-8">
               <div className="over-view">
                 <nav>
-                  <ul>
-                    <li></li>
-                  </ul>
+                <li>{item.tenLoaiCongViec} <i className="fas fa-chevron-right" ></i></li>
+                <li>{item.tenNhomChiTietLoai} <i className="fas fa-chevron-right"></i></li>
+                <li>{item.congViec.tenCongViec}</li>
                 </nav>
+
                 <h3 className="title">{item.congViec.tenCongViec}</h3>
                 <div className="seller-overview d-flex">
                   <div className="avatar-author d-flex">
@@ -107,9 +120,8 @@ export default function Detail({}: Props) {
               </div>
               <hr />
             </div>
-
             <div className="sidebar col-4">
-              {/* <PriceDetail/> */}
+             {/* <PriceDetail/> */}
               <div className="tabs">
                 <div className="tabsList">
                   <div
@@ -177,7 +189,7 @@ export default function Detail({}: Props) {
                       </div>
                       <div className="article">
                         <div className="time-info my-2">30 Days Dellvery</div>
-                        <p className="ml-2">{item.congViec.moTaNgan}</p>
+                        <p className="ml-2 describe-title" >{item.congViec.moTaNgan}</p>
                         <ul>
                           <div>
                             <li>
@@ -206,7 +218,7 @@ export default function Detail({}: Props) {
                   </div>
                 </div>
                 <div className="tab-footer">
-                  <div className="btn-cont">Continue ($1000)</div>
+                  <div className="btn-cont" onClick={handleCheckOut}>Continue (${item.congViec.giaTien})</div>
                   <a href="#">Compare Package</a>
                 </div>
               </div>

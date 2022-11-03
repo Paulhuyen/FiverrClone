@@ -6,8 +6,9 @@ import {Button, Drawer, Space, Table} from "antd";
 import { ColumnsType } from 'antd/lib/table';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/configStore';
-import { getAllJobTypeApi } from '../../../redux/reducers/AdminManageJobReducer';
+import { deleteJobTypeApi, getAllJobTypeApi, getIdJobTypeApi } from '../../../redux/reducers/AdminManageJobTypeReducer';
 import ModalAddJobType from '../../../HOC/ModalAdd/ModalAddJobType';
+import ModalEditJobType from '../../../HOC/ModalUpdate/ModalEditJobType';
 type Props = {}
 
 interface DataType {
@@ -16,8 +17,7 @@ interface DataType {
 }
 export default function ManageJob({}: Props) {
   const dispatch = useDispatch();
-  const {arrJobType} = useSelector((state: RootState)=> state.AdminManageJobReducer);
-  console.log('arr',arrJobType)
+  const {arrJobType} = useSelector((state: RootState)=> state.AdminManageJobTypeReducer);
   useEffect(()=> {
     const action:any = getAllJobTypeApi();
     dispatch(action)
@@ -39,21 +39,27 @@ export default function ManageJob({}: Props) {
       dataIndex:'action',
       render: (_, { id }) => (
         <div className='btn_action'>
-          <button className='btn btn-danger mx-2'><DeleteOutlined /></button>
-          <button className='btn btn-primary mx-2'><SettingOutlined /></button>
+          <button className='btn btn-danger mx-2'onClick={()=>{
+            const action:any = deleteJobTypeApi(id)
+            dispatch(action)
+          }}><DeleteOutlined /></button>
+          <button className='btn btn-primary mx-2' onClick={()=>{
+             setOpenEdit(true);
+             const action:any = getIdJobTypeApi(id);
+             dispatch(action)
+          }}
+          ><SettingOutlined /></button>
         </div>
       )
     },
   ]
   //modal
   const [open, setOpen] = useState(false);
-  // const [size, setSize] = useState<DrawerProps['size']>();
-
-  const showDefaultDrawer = () => {
-    setOpen(true);
+  const [openEdit, setOpenEdit] = useState(false);
+  const onCloseEdit = () => {
+    setOpenEdit(false);
   };
-
-  const showLargeDrawer = () => {
+  const showDefaultDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
@@ -62,8 +68,8 @@ export default function ManageJob({}: Props) {
   return (
     <div className='main'>
       <main>
-      <Button type="primary" onClick={showDefaultDrawer}>
-          Thêm Loại Công Việc
+       <Button type="primary" onClick={showDefaultDrawer}>
+          Add Job
        </Button>
        <Drawer
         title="Thêm Loại Công Việc"
@@ -74,8 +80,18 @@ export default function ManageJob({}: Props) {
       >
       <ModalAddJobType/>
       </Drawer>
+      {/* edit */}
+       <Drawer
+        title="Sửa Công Việc"
+        width={720}
+        onClose={onCloseEdit}
+        open={openEdit}
+        bodyStyle={{ paddingBottom: 80 }}
+      >
+      <ModalEditJobType/>
+      </Drawer>
       </main>
-              <Table columns={columns} dataSource={arrJobType}>
+              <Table columns={columns} rowKey={"id"} dataSource={arrJobType}>
               </Table>
   </div>
   )

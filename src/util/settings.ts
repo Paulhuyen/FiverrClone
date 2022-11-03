@@ -43,10 +43,11 @@ export const config = {
   ACCESS_TOKEN: 'accessToken',
   USER_LOGIN: 'userLogin',
   ID_USER:'id_User',
+  ROLE_USER: 'role_user'
 
 };
 
-export const { setCookie,  getCookie,  getStore, setStore, setStoreJson, getStoreJson,ACCESS_TOKEN,USER_LOGIN,ID_USER } = config;
+export const { setCookie,  getCookie,  getStore, setStore, setStoreJson, getStoreJson,ROLE_USER,ACCESS_TOKEN,USER_LOGIN,ID_USER } = config;
 
 
 const DOMAIN = 'https://fiverrnew.cybersoft.edu.vn';

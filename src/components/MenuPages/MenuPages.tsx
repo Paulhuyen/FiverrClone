@@ -1,16 +1,20 @@
 import { AudioOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { Dropdown, Input } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../assets/styles.scss";
 import { RootState } from "../../redux/configStore";
+import { history } from '../../index';
+
 import {
   DsChiTietLoai,
   DsNhomChiTietLoai,
   getJobMenu,
   JobMenu,
 } from "../../redux/reducers/ProducReducers";
+import { ACCESS_TOKEN, USER_LOGIN } from "../../util/settings";
+import { signOutAction } from "../../redux/reducers/UserReducer";
 type Props = {};
 const { Search } = Input;
 
@@ -18,6 +22,11 @@ const onSearch = (value: string) => console.log(value);
 export default function MenuPages({}: Props) {
   const { arrayJobMenu } = useSelector((state: RootState) => state.ProducReducers);
   const { userLogin } = useSelector((state: RootState) => state.UserReducer);
+  function logOut(){
+    localStorage.clear();
+    history.push('/home')
+    dispatch(signOutAction(userLogin));
+  }
   console.log('alo',userLogin)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -67,7 +76,18 @@ export default function MenuPages({}: Props) {
     if(userLogin == null){
       return<NavLink to={'/logindemo'}>Login</NavLink>
     }else{
-      return<li>{userLogin.name}</li> 
+      return<li>
+       <div className="dropdown open">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {userLogin.name}
+          </button>
+          <div className="dropdown-menu" aria-labelledby="triggerId">
+            <NavLink className="dropdown-item " to="/"><button onClick={logOut}>Đăng Xuất</button></NavLink>
+            <NavLink className="dropdown-item" to="/profile">Profile</NavLink>
+          </div>
+        </div>
+
+      </li> 
     }
   }
   return (
@@ -106,10 +126,8 @@ export default function MenuPages({}: Props) {
               <li>
                 <a href="/">Become a seller</a>
               </li>
-              <li>
                 {renderUserLogin()}
                 {/* <NavLink to="/logindemo">Login </NavLink> */}
-              </li>
               {/* <li>{userLogin.name}</li> */}
               {/* <li>
                   <div className="avata-user"><img src="./img/avt.jpg" style={{width:50, height:50, objectFit:'cover', borderRadius:50}} alt="" /></div>

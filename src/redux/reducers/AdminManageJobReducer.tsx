@@ -1,69 +1,113 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { http } from '../../util/settings';
-import { AppDispatch } from '../configStore';
-import { ModalJob } from '../models/jobModel';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { http } from "../../util/settings";
+import { AppDispatch } from "../configStore";
+import { Job } from "../models/jobModel";
 
-const initialState:any = {
-    arrJobType: [],
-}
+const initialState: any = {
+  arrayJobAdmin: [],
+  idJob: {},
+};
 
 const AdminManageJobReducer = createSlice({
-  name: 'AdminManageJobReducer',
+  name: "AdminManageJobReducer",
   initialState,
   reducers: {
-    getAllJobTypeApiAction:(state,action: PayloadAction<ModalJob[]> ) => {
-        state.arrJobType = action.payload;
-      },
-    postJobTypeApiAction:(state,action: PayloadAction<ModalJob[]> ) => {
-        state.arrJobType = action.payload;
-      },
-  }
+    getAllJobAction: (state, action: PayloadAction<Job[]>) => {
+      state.arrayJobAdmin = action.payload;
+    },
+    postJobAction: (state, action: PayloadAction<Job[]>) => {
+      state.arrayJobAdmin = action.payload;
+    },
+    getIdJobAction: (state, action: PayloadAction<Job[]>) => {
+      state.idJob = action.payload;
+    },
+    searchNameJobAction: (state, action: PayloadAction<Job[]>) => {
+      state.arrayJobAdmin = action.payload;
+    },
+  },
 });
 
-export const {getAllJobTypeApiAction,postJobTypeApiAction} = AdminManageJobReducer.actions
+export const { getAllJobAction, postJobAction, getIdJobAction,searchNameJobAction } =
+  AdminManageJobReducer.actions;
 
-export default AdminManageJobReducer.reducer
-
-
-
-export const getAllJobTypeApi = ()=>{
-    return async (dispatch: AppDispatch) =>{
-      try {
-        const response = await http.get('/api/loai-cong-viec');
-        let arrJobType: ModalJob[] = response.data.content;
-        console.log(arrJobType)
-        const action = getAllJobTypeApiAction(arrJobType);
-        dispatch(action);
-        } catch (error) {
-        }
-      }
-}
-
-export const postJobTypeApi = (value:any)=>{
-  return async (dispatch: AppDispatch) =>{
+export default AdminManageJobReducer.reducer;
+// get all job
+export const getAllJob = () => {
+  return async (dispatch: AppDispatch) => {
     try {
-      const response = await http.post('/api/loai-cong-viec',value);
-      let arrJobType: ModalJob[] = response.data.content;
-      console.log(arrJobType)
-      const action = postJobTypeApiAction(arrJobType);
-      alert('Thêm loại công việc thành công')
+      const response = await http.get("/api/cong-viec");
+      let arrayJobAdmin: Job[] = response.data.content;
+      const action = getAllJobAction(arrayJobAdmin);
       dispatch(action);
-      } catch (error) {
-       alert('Thêm loại công việc không thành công')
-
-      }
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
+};
 
-export const deleteJobTypeApi = (id:any)=>{
-  return async (dispatch: AppDispatch) =>{
+// create
+export const postJob = (value: any) => {
+  return async (dispatch: AppDispatch) => {
     try {
-      const response = await http.delete(`/api/loai-cong-viec/${id}`);
-      // let arrJobType: ModalJob[] = response.data.content;
-      // console.log(arrJobType)
-      // const action = postJobTypeApiAction(arrJobType);
-      // dispatch(action);
-      } catch (error) {
-      }
+      const response = await http.post("/api/cong-viec", value);
+      let arrayJobAdmin: Job[] = response.data.content;
+      const action = postJobAction(arrayJobAdmin);
+      dispatch(action);
+      console.log("data add job", arrayJobAdmin);
+      alert("oke");
+    } catch (error) {
+      alert("err");
     }
+  };
+};
+//delete
+export const deleteJob = (id: any) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await http.delete(`/api/cong-viec/${id}`);
+    } catch (error) {}
+  };
+};
+// get id edit
+export const getIdJob = (id: any) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await http.get(`/api/cong-viec/${id}`);
+      console.log(response.data.content);
+      let idJob: Job[] = response.data.content;
+      const action = getIdJobAction(idJob);
+      dispatch(action);
+      console.log("data add job", idJob);
+      alert("id thành công");
+    } catch (error) {
+      alert("err id");
+    }
+  };
+};
+//update
+export const updateIdJob= (data:any) => {
+  return async (dispatch:AppDispatch) => {
+      try {
+          const response = await http.put(`/api/cong-viec/${data.id}`,data)
+          alert('update thành công');
+      }catch(err){
+          console.log(err);
+          alert('update Thất bại')
+      }
+  }
+}
+//search
+export const searchNameJob= (value:any) => {
+  return async (dispatch:AppDispatch) => {
+      try {
+          const response = await http.get(`/api/cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`)
+          console.log(response.data.content);
+          let arrSearchNameJob : Job[] = response.data.content;
+          const action = searchNameJobAction(arrSearchNameJob)
+          dispatch(action)
+      }catch(err){
+          console.log(err);
+          alert('update Thất bại')
+      }
+  }
 }

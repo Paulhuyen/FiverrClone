@@ -21,15 +21,15 @@ export default function GigsProfile({}: Props) {
   return (
     <div className="gigs-column col-8">
     <div className="gigs-prod">
-        {congViecDaThue?.map((congViecThue:ThueCongViecModal, index:number )=>{
+        {congViecDaThue?.map((congViecThue:any, index:number )=>{
              return(
                 <div className="gigs-prod-inner card-prod row" key={index}>
                 <div className="prod-img col-4">
-                    <img src={congViecThue.congViec.hinhAnh} alt="" />
+                    <img src={congViecThue.congViec?.hinhAnh} alt="..." />
                 </div>
                 <div className="prod-title col-8">
-                    <a href="#" className="prod-name">{congViecThue.congViec.tenCongViec}</a>
-                    <p className="prod-title">{congViecThue.congViec.moTaNgan}</p>
+                    <a href="#" className="prod-name">{congViecThue.congViec?.tenCongViec}</a>
+                    <p className="prod-title">{congViecThue.congViec?.moTaNgan}</p>
                     <div className="prod-footer d-flex">
                         <div className="btn-detail btn">View detail</div>
                         <div className="btn-edit btn" >Edit</div>

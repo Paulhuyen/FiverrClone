@@ -180,7 +180,6 @@ export const getCongViecApi = ()=> {
       try {
           const response = await http.get('/api/thue-cong-viec/lay-danh-sach-da-thue')
           let congViecDaThue : ThueCongViecModal[] = response.data.content;
-          console.log(response)
           const action = getCongViecDaThueAction(congViecDaThue);
          dispatch(action);
       } catch (error) {

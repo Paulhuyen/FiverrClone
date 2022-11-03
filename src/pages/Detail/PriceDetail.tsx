@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/configStore";
+import { getStoreJson } from "../../util/settings";
 
 type Props = {};
 
 export default function PriceDetail({}: Props) {
   const [index, setIndex] = useState(0);
+  // const titleDetail = getStoreJson("arrayJobDetail");
+  const {arrayJobDetail} = useSelector((state: RootState)=> state.ProducReducers);
+
+  console.log(arrayJobDetail)
 
   return (
     <div className="tabs">
@@ -38,7 +45,7 @@ export default function PriceDetail({}: Props) {
           <div className="package-content">
             <div className="header-default d-flex">
               <p>Basic</p>
-              <p>US$40</p>
+              {/* <p>{arrayJobDetail?.tenChiTietLoai}</p> */}
             </div>
             <div className="article">
               <div className="time-info">30 Days Dellvery</div>
@@ -69,7 +76,7 @@ export default function PriceDetail({}: Props) {
           2
         </div>
         <div className="tabContant" hidden={index != 2}>
-          3
+          
         </div>
       </div>
       <div className="tab-footer">

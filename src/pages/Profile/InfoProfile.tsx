@@ -1,9 +1,10 @@
 import { GoogleOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button, Upload } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/configStore';
 import { getCongViecApi } from '../../redux/reducers/ProducReducers';
-import { getUserApi,  } from '../../redux/reducers/UserReducer';
+import { getUserApi, updateAvatar,  } from '../../redux/reducers/UserReducer';
 type Props = {
     
 }
@@ -23,6 +24,14 @@ export default function InfoProfile({}: Props) {
   useEffect(() => {
     dispatch(getCongViecApi());
  }, []);
+ const handlePreviewAvatar = (e:any) =>{
+     const file = e.target.files[0];
+     file.preview = URL.createObjectURL(file)
+    //  console.log(URL.createObjectURL(file))
+     const action = updateAvatar(file)
+     dispatch(action)
+
+ }
   return (
     <div className="info-column col col-lg-4">
       <div>
@@ -30,9 +39,11 @@ export default function InfoProfile({}: Props) {
         <div className="user-profile-info">
           <div className="user-profile-image">
             <div className="user-img">
-              <img src="./img/avt.jpg" alt="" />
+              <img src={userLogin.avatar} alt="" />
               <div className="icon-camera">
+                {/* <input type="file" onChange={handlePreviewAvatar}/> */}
                 <i className="fa fa-camera" aria-hidden="true"></i>
+                {/* <Upload></Upload> */}
               </div>
             </div>
           </div>
