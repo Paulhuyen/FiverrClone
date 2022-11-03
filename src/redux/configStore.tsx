@@ -1,10 +1,9 @@
-import {configureStore, PayloadAction} from '@reduxjs/toolkit';
-import ProducReducers from './reducers/ProducReducers';
-
+import { configureStore } from '@reduxjs/toolkit'
+import JobReducers from './reducers/JobReducers'
 
 export const store = configureStore({
     reducer: {
-        ProducReducers:ProducReducers
+        JobReducers: JobReducers
     }
 })
 

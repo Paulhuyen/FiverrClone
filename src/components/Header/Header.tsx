@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Search from "../../pages/Search/Search";
 
 type Props = {
   title?: string;
@@ -18,7 +17,7 @@ export default function Header(props: Props) {
             </span>
           </NavLink>
           
-          <Search/>
+          {/* <Search/> */}
 
           <div className="collapse navbar-collapse" id="collapsibleNavId">
             <ul className="navbar-nav mt-2 mt-lg-0">
