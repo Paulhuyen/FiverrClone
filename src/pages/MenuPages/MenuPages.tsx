@@ -44,9 +44,15 @@ export default function MenuPages({ title}: Props) {
             {menuPages.tenLoaiCongViec}
           </a>
           <div className="submenu">
-            <div className="container">
-              
-            </div>
+            <ul>
+              {menuPages.dsNhomChiTietLoai?.map((groupItem: DsNhomChiTietLoai, index: number) => {
+                return(
+                  <li key={index}>
+                    
+                  </li>
+                )
+              })}
+            </ul>
           </div>
         </li>
       );
