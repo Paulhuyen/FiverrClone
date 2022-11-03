@@ -86,26 +86,16 @@ export default ProducReducers.reducer;
 // -------------- API --------------------------
 
 export const getJobListByName = (keyword?: string) => {
-  // let [searchParams, setSearchParams] = useSearchParams();
-  // let [setArrJobList] = useState([]);
   return async (dispatch: AppDispatch) => {
     try {
-      // let searchParams = useSearchParams();
-      // const keyword = search => {
-      //   console.log(key.tenCongViec);
-      // }); //null
-      const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/keyword?=${keyword}`);
+      const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${keyword}`);
       console.log(result.data.content);
-    
-      // if (keyword?.trim() !== "" && keyword !== null) {
-      //   const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${keyword}`);
         //sau khi lấy kq đưa lên redux
         let arrJobList: ProductModel[] = result.data.content;
         const action = getJobListByNameAction(arrJobList);
         dispatch(action);
         console.log("SEARCH RESULT", arrJobList);
-      }
-       catch (err) {
+      } catch (err) {
       console.log(err);
     }
   };

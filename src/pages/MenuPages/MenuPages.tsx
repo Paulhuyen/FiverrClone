@@ -43,43 +43,30 @@ export default function MenuPages({ title}: Props) {
           >
             {menuPages.tenLoaiCongViec}
           </a>
-          <div className="submenu">
+          {/* <div className="submenu">
             <ul>
               {menuPages.dsNhomChiTietLoai?.map((groupItem: DsNhomChiTietLoai, index: number) => {
                 return(
                   <li key={index}>
-                    
+                    <h6>
+                      {groupItem.tenNhom}
+                    </h6>
+                    {groupItem.dsChiTietLoai.map((item: DsChiTietLoai) => {
+                      return(
+                        <a href="#">
+                          {item.tenChiTiet}
+                        </a>
+                      )
+                    })}
                   </li>
                 )
               })}
             </ul>
-          </div>
+          </div> */}
         </li>
       );
     });
   };
-
-  // const renderGroupName = ()=> {
-  //   return menuLoaiCV.map((group:DsNhomChiTietLoai, item: DsChiTietLoai) => {
-  //     return(
-  //       <>
-  //         <h6>
-  //           {group.tenNhom}
-  //         </h6>
-  //         <ul>
-  //           <li>
-  //             <a href="#">
-  //               {item.tenChiTiet}
-  //             </a>
-  //           </li>
-  //         </ul>
-  //       </>
-  //     )
-  //   })
-  // }
-
-
-  // jobGroup: DsNhomChiTietLoai, name: DsChiTietLoai,
 
   return (
     <>
@@ -89,15 +76,6 @@ export default function MenuPages({ title}: Props) {
           
         </div>
       </nav>
-      {/* <div className="submenu">
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <div className="item">{renderGroupName()}</div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

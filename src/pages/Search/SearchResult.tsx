@@ -28,6 +28,7 @@ export default function SearchResult({ title }: Props) {
   useEffect(() => {
     // Call API = action thunk
     const actionApi = getJobListByName();
+    // console.log(keyword);
     dispatch(actionApi);
   }, []);
 
