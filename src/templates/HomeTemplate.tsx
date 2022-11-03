@@ -11,6 +11,7 @@ export default function HomeTemplate({}: Props) {
       <Header/>
       <MenuPages/>
       <Outlet/>
+      
     </>
   )
 }
