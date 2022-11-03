@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import "../../assets/styles.scss";
-import DetailCategories from "../../pages/Categories/DetailCategories";
 import { AppDispatch, RootState } from "../../redux/configStore";
 import {
   getAllChiTietLoaiCV,
   getAllMenuLoaiCV,
   ProductModel,
   menuModel,
+  DsNhomChiTietLoai,
+  DsChiTietLoai,
 } from "../../redux/reducers/ProducReducers";
 type Props = {
-  title?: menuModel;
+  title?: [menuModel, DsNhomChiTietLoai, DsChiTietLoai];
 };
 
-export default function MenuPages({ title }: Props) {
+export default function MenuPages({ title}: Props) {
   const { menuLoaiCV } = useSelector(
     (state: RootState) => state.ProducReducers
   );
@@ -29,8 +30,9 @@ export default function MenuPages({ title }: Props) {
     const actionApi = getAllMenuLoaiCV();
     dispatch(actionApi);
   }, []);
+
   const renderMenuPages = () => {
-    return menuLoaiCV.map((menuPages: menuModel, index: number) => {
+    return menuLoaiCV.map((menuPages: menuModel, index: number)=> {
       return (
         <li key={index}>
           <a
@@ -41,30 +43,55 @@ export default function MenuPages({ title }: Props) {
           >
             {menuPages.tenLoaiCongViec}
           </a>
+          <div className="submenu">
+            <div className="container">
+              
+            </div>
+          </div>
         </li>
       );
     });
   };
+
+  // const renderGroupName = ()=> {
+  //   return menuLoaiCV.map((group:DsNhomChiTietLoai, item: DsChiTietLoai) => {
+  //     return(
+  //       <>
+  //         <h6>
+  //           {group.tenNhom}
+  //         </h6>
+  //         <ul>
+  //           <li>
+  //             <a href="#">
+  //               {item.tenChiTiet}
+  //             </a>
+  //           </li>
+  //         </ul>
+  //       </>
+  //     )
+  //   })
+  // }
+
+
+  // jobGroup: DsNhomChiTietLoai, name: DsChiTietLoai,
 
   return (
     <>
       <nav className="menu-pages">
         <div className="container">
           <ul>{renderMenuPages()}</ul>
-          {/* <DetailCategories/> */}
+          
         </div>
       </nav>
-      <div className="suggested">
-        <div className="container d-flex">
-          <b>Suggested</b>
-          <div className="tag">
-            <a href="#">Website Design</a>
-            <a href="#">WordPress</a>
-            <a href="#">Logo Design</a>
-            <a href="#">Video Editing</a>
+      {/* <div className="submenu">
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <div className="item">{renderGroupName()}</div>
+            </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

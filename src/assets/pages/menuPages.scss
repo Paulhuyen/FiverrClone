@@ -1,55 +1,27 @@
-.menu-pages{
+.menu-pages {
     border-top: 1px solid $bg-profile-border;
     border-bottom: 1px solid $bg-profile-border;
-    margin-top:  20px;
-    .container{
-        ul{
-            display: flex;
-            justify-content: space-between;
-            margin: auto;
-            padding-left: 0;
-            li{
-                border-bottom: 2px solid $cl-text-white;
-                padding: 10px;
-                cursor: pointer;
-                a{
-                    color:$cl-text ;
-                    font-size: $text-16;
-                }
-                &:hover{
-                    border-bottom: 2px solid $bg-button-hover;
-                    transition: all 0.3s;
-                }
-            }
+    margin-top: 20px;
+    .container {
+      padding: 0 32px;
+      ul {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        padding-left: 0;
+        li {
+          border-bottom: 2px solid $cl-text-white;
+          padding: 10px;
+          cursor: pointer;
+          a {
+            color: $cl-text;
+            font-size: $text-16;
+          }
+          &:hover {
+            border-bottom: 2px solid $bg-button-hover;
+            transition: all 0.3s;
+          }
         }
-    }
-}
-
-.suggested{
-    margin-bottom: 20px;
-    border-bottom: 1px solid $bg-profile-border;
-    background-color: $bg-suggested;
-    .container{
-        align-items: center;
-        b{
-            font-size: $text-15;
-            padding: 0 10px;
-        }
-        .tag{
-            a{
-                background-color: $bg-white;
-                font-size: $text-13;
-                color: $cl-text;
-                display: inline-block;
-                border: 1px solid $c5-text-grey;
-                padding: 0 10px;
-                margin: 15px 10px 15px 0;
-                border-radius: 3px;
-                &:hover{
-                    background-color: $bg-suggested-hover;
-                    border: 1px solid $c1-suggested-hover;
-                }
-            }
-        }
+      }
     }
 }

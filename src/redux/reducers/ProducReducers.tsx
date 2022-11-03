@@ -2,6 +2,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { http } from "../../util/settings";
 import { AppDispatch } from "../configStore";
+// import React, {useRef, useState, useEffect} from "react";
+import { createSearchParams, NavLink, useSearchParams } from "react-router-dom";
+import JobsList from "../../pages/JobList/JobList";
 
 export interface JobsList {
   id: number;
@@ -67,7 +70,7 @@ const ProducReducers = createSlice({
       state.menuLoaiCV = action.payload;
     },
 
-    getJobListByNameAction: (state, action: PayloadAction<JobsList[]>) => {
+    getJobListByNameAction: (state, action: PayloadAction<ProductModel[]>) => {
       state.arrJobList = action.payload;
     },
 
@@ -81,6 +84,32 @@ export default ProducReducers.reducer;
 
 
 // -------------- API --------------------------
+
+export const getJobListByName = (keyword?: string) => {
+  // let [searchParams, setSearchParams] = useSearchParams();
+  // let [setArrJobList] = useState([]);
+  return async (dispatch: AppDispatch) => {
+    try {
+      // let searchParams = useSearchParams();
+      // const keyword = search => {
+      //   console.log(key.tenCongViec);
+      // }); //null
+      const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/keyword?=${keyword}`);
+      console.log(result.data.content);
+    
+      // if (keyword?.trim() !== "" && keyword !== null) {
+      //   const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${keyword}`);
+        //sau khi lấy kq đưa lên redux
+        let arrJobList: ProductModel[] = result.data.content;
+        const action = getJobListByNameAction(arrJobList);
+        dispatch(action);
+        console.log("SEARCH RESULT", arrJobList);
+      }
+       catch (err) {
+      console.log(err);
+    }
+  };
+};
 
 export const getAllMenuLoaiCV = () => {
   return async (dispatch: AppDispatch) => {
@@ -111,3 +140,5 @@ export const getAllChiTietLoaiCV = (id:number) => {
     }
   };
 };
+
+// export const getCVTheoChTietLoai = () => {}
