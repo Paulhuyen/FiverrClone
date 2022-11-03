@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 //setup react router dom
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import {store} from "./redux/configStore";
 import HomeTemplate from './templates/HomeTemplate';
 import './assets/styles.scss';
