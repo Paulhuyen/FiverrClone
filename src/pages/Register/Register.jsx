@@ -3,12 +3,13 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import {AppDispatch} from "../../redux/configStore";
-import '../../assets/pages/register.scss'
+
+import { registerApi } from "../../redux/reducers/userReducer";
 
 
 //
 export default function Register(props) {
-  const dispatch : Ap = useDispatch();
+  const dispatch : AppDispatch = useDispatch();
   const frm = useFormik({
     initialValues: {
       email: "",
@@ -52,7 +53,7 @@ export default function Register(props) {
     onSubmit: (values) => {
       console.log(values);
 
-    //   dispatch(registerApi(values));
+      dispatch(registerApi(values));
     },
   });
 
@@ -67,8 +68,15 @@ export default function Register(props) {
           {/* <form className="form" id="formRegister" onSubmit={handleSubmit()}> */}
           <div className="reg-content">
             <div className="reg-left">
-              <div className="material-form-field">
-                <input
+              <div className="material-form-field ">
+                <label
+                  className="material-form-field-label"
+                  htmlFor="field-text"
+                >
+                  Email
+                </label>
+                <input 
+                className="form-control"
                   id="email"
                   placeholder="email@gmail.com"
                   required
@@ -76,12 +84,7 @@ export default function Register(props) {
                   onChange={frm.handleChange}
                   onBlur={frm.handleBlur}
                 />
-                <label
-                  className="material-form-field-label"
-                  htmlFor="field-text"
-                >
-                  Email
-                </label>
+                
                 {frm.errors.email && frm.touched.email ? (
                   <span className="text-danger">{frm.errors.email}</span>
                 ) : (
@@ -89,19 +92,22 @@ export default function Register(props) {
                 )}
               </div>
               <div className="material-form-field">
-                <input
-                  id="password"
-                  required
-                  name="password"
-                  onChange={frm.handleChange}
-                  onBlur={frm.handleBlur}
-                />
                 <label
                   className="material-form-field-label"
                   htmlFor="field-text"
                 >
                   Password
                 </label>
+                <input 
+                className="form-control"
+                  id="password"
+
+                  required
+                  name="password"
+                  onChange={frm.handleChange}
+                  onBlur={frm.handleBlur}
+                />
+               
                 {frm.errors.password && frm.touched.password ? (
                   <span className="text-danger">{frm.errors.password}</span>
                 ) : (
@@ -109,18 +115,21 @@ export default function Register(props) {
                 )}
               </div>
               <div className="material-form-field">
-                <input
-                  id="passwordConfirm"
-                  required
-                  name="passwordConfirm"
-                  onChange={frm.handleChange}
-                />
                 <label
                   className="material-form-field-label"
                   htmlFor="field-text"
                 >
                   Password Confirm
                 </label>
+                <input 
+                className="form-control"
+                  id="passwordConfirm"
+
+                  required
+                  name="passwordConfirm"
+                  onChange={frm.handleChange}
+                />
+                
                 {frm.errors.passwordConfirm ? (
                   <span className="text-danger">
                     {frm.errors.passwordConfirm}
@@ -132,19 +141,21 @@ export default function Register(props) {
             </div>
             <div className="reg-right">
               <div className="material-form-field">
-                <input
+              <label
+                  className="material-form-field-label"
+                  htmlFor="field-text"
+                >
+                  Name
+                </label>
+                <input 
+                className="form-control"
                   id="name"
                   required
                   name="name"
                   onChange={frm.handleChange}
                   onBlur={frm.handleBlur}
                 />
-                <label
-                  className="material-form-field-label"
-                  htmlFor="field-text"
-                >
-                  Name
-                </label>
+                
                 {frm.errors.name && frm.touched.name ? (
                   <span className="text-danger">{frm.errors.name}</span>
                 ) : (
@@ -152,19 +163,21 @@ export default function Register(props) {
                 )}
               </div>
               <div className="material-form-field">
-                <input
-                  id="phone"
-                  required
-                  name="phone"
-                  onChange={frm.handleChange}
-                  onBlur={frm.handleBlur}
-                />
                 <label
                   className="material-form-field-label"
                   htmlFor="field-text"
                 >
                   Phone
                 </label>
+                <input 
+                className="form-control"
+                  id="phone"
+                  required
+                  name="phone"
+                  onChange={frm.handleChange}
+                  onBlur={frm.handleBlur}
+                />
+                
                 {frm.errors.phone && frm.touched.phone ? (
                   <span className="text-danger">{frm.errors.phone}</span>
                 ) : (

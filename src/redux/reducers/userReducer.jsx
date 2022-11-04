@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
+import { http } from '../../util/settings';
+import userLogin from './userLogin';
 
 const initialState = {
 
@@ -15,25 +17,16 @@ export const {} = userReducer.actions
 
 export default userReducer.reducer
 
-export const registeApi = (userRegister) => {
+export const registerApi = (userRegister) => {
 
     return async (dispatch) => {
         try {
-            const result = await axios ({
-                url : 'https://fiverrnew.cybersoft.edu.vn/api/auth/signup',
-                method: 'POST',
-                data:userRegister,
-                
-            });
-            alert( result.data.content );
-        } catch (err) {
-            console.log(err);
+            const result = await http.post(`/auth/signup`, userRegister);
+            alert("đăng kí thành công")
+        } catch(err) {
+            console.log(err)
             alert(err.response.data.content);
-
-
         }
-
-    
     }
 
 }
