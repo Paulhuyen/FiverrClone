@@ -36,7 +36,7 @@ root.render(
     <HistoryRouter history={history}>
       <Routes>
         <Route path='' element={<HomeTemplate/>}>
-          <Route index element={<Home/>}></Route>
+          <Route index element={<DemoProduct/>}></Route>
           <Route path='categories'>
             <Route path=':id'  element={<DetailCategories/>}></Route>
           </Route>
@@ -48,6 +48,9 @@ root.render(
           <Route path='logindemo' element={<LoginDemo/>}></Route>
           <Route path='modaluser' element={<ModalManageUser/>}></Route>
           <Route path='*' element={<Navigate to=""/>}></Route>
+        </Route>
+        <Route path='/categories' element={<HomeTemplate/>}>
+            <Route path=':id'  element={<DetailCategories/>}></Route>
         </Route>
         <Route path='admin' element={<AdminTemplate/>}>
            <Route index element={<ManageUser/>}></Route>
