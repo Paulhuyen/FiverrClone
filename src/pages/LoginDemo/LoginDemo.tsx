@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { loginApi } from '../../redux/reducers/UserReducer';
+import { loginApi } from '../../redux/reducers/AdminUserReducer';
 import { AppDispatch } from '../../redux/configStore';
 
 

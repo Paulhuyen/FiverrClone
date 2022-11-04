@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import './assets/styles.scss'
+// import './assets/styles'
 //setup react router dom
 import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 import Home from './pages/Home/Home';
@@ -23,9 +23,12 @@ import LoginDemo from './pages/LoginDemo/LoginDemo';
 import ModalManageUser from './HOC/ModalUpdate/ModalManageUser';
 import ManageService from './pages/AdminPages/ManageService/ManageService';
 import ManageJobTypeDtail from './pages/AdminPages/ManageJobTypeDetail.tsx/ManageJobTypeDtail';
-
-
+// import Login from './pages/Login/login';
+// import Register from './pages/Register/Register';
 export const history = createBrowserHistory({ window });
+
+
+
 
 
 const root = ReactDOM.createRoot(
@@ -47,11 +50,13 @@ root.render(
           <Route path='profile' element={<Profile/>}></Route>
           <Route path='logindemo' element={<LoginDemo/>}></Route>
           <Route path='modaluser' element={<ModalManageUser/>}></Route>
+          {/* <Route path='register' element={<Register/>}></Route> */}
+          {/* <Route path='login' element={<Login/>}></Route> */}
           <Route path='*' element={<Navigate to=""/>}></Route>
         </Route>
-        <Route path='/categories' element={<HomeTemplate/>}>
+        {/* <Route path='/categories' element={<HomeTemplate/>}>
             <Route path=':id'  element={<DetailCategories/>}></Route>
-        </Route>
+        </Route> */}
         <Route path='admin' element={<AdminTemplate/>}>
            <Route index element={<ManageUser/>}></Route>
            <Route path='managenmentjobtype' element={<ManageJob/>}></Route>

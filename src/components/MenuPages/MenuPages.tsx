@@ -15,7 +15,7 @@ import {
   JobMenu,
 } from "../../redux/reducers/ProducReducers";
 import { ACCESS_TOKEN, USER_LOGIN } from "../../util/settings";
-import { signOutAction } from "../../redux/reducers/UserReducer";
+import { signOutAction } from "../../redux/reducers/AdminUserReducer";
 type Props = {};
 const { Search } = Input;
 

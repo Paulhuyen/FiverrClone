@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/configStore";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { updateUserApi } from "../../redux/reducers/UserReducer";
+import { updateUserApi } from "../../redux/reducers/AdminUserReducer";
 
 export default function ModalManageUser() {
   const { editUser } = useSelector((state: RootState) => state.UserReducer);

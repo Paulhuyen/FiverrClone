@@ -58,8 +58,8 @@ const initialState: any = {
   editUser: [],
 };
 
-const UserReducer = createSlice({
-  name: "UserReducer",
+const AdminUserReducer = createSlice({
+  name: "AdminUserReducer",
   initialState,
   reducers: {
     getArrayUser: (state, action: PayloadAction<UserModal[]>) => {
@@ -92,9 +92,9 @@ export const {
   editUserApiAction,
   getSearchArrayUser,
   signOutAction
-} = UserReducer.actions;
+} = AdminUserReducer.actions;
 
-export default UserReducer.reducer;
+export default AdminUserReducer.reducer;
 //list user
 export const getAllUser = () => {
   return async (dispatch: AppDispatch) => {

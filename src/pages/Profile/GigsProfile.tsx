@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/configStore';
 import { ThueCongViecModal } from '../../redux/models/jobModel';
 import { deleteThueCongViecApi, getCongViecApi } from '../../redux/reducers/ProducReducers';
-import { getUserApi } from '../../redux/reducers/UserReducer';
+import { getUserApi } from '../../redux/reducers/AdminUserReducer';
 import { Modal, Rate } from 'antd';
 import { getIdJob } from '../../redux/reducers/AdminManageJobReducer';
 

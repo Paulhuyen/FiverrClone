@@ -1,5 +1,5 @@
 import React from 'react'
-import { creatUserApi } from '../../redux/reducers/UserReducer';
+import { creatUserApi } from '../../redux/reducers/AdminUserReducer';
 import * as Yup from "yup";
 import { AppDispatch } from '../../redux/configStore';
 import { useDispatch } from 'react-redux';

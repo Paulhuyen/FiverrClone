@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/configStore';
 import { getCongViecApi } from '../../redux/reducers/ProducReducers';
-import { getUserApi, updateAvatar,  } from '../../redux/reducers/UserReducer';
+import { getUserApi, updateAvatar,  } from '../../redux/reducers/AdminUserReducer';
 type Props = {
     
 }

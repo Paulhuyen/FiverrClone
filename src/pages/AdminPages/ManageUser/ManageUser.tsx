@@ -17,7 +17,7 @@ import {
   getAllUser,
   searchUserApi,
   // UserModal,
-} from "../../../redux/reducers/UserReducer";
+} from "../../../redux/reducers/AdminUserReducer";
 //ant
 import "antd/dist/antd.css";
 import ModalManageUser from "../../../HOC/ModalUpdate/ModalManageUser";

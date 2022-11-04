@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/configStore";
 import * as Yup from "yup";
 import { Input } from "antd";
-import { creatUserApi } from "../../redux/reducers/UserReducer";
+import { creatUserApi } from "../../redux/reducers/AdminUserReducer";
 type Props = {};
 
 export default function FormUser({}: Props) {

@@ -8,7 +8,7 @@ import ModalAddJob from '../../../HOC/ModalAdd/ModalAddJob';
 import ModalEditJob from '../../../HOC/ModalUpdate/ModalEditJob';
 import { RootState } from '../../../redux/configStore';
 import { deleteJob, getAllJob, getIdJob, searchNameJob } from '../../../redux/reducers/AdminManageJobReducer';
-import { getAllUser, searchUserApi } from '../../../redux/reducers/UserReducer';
+import { getAllUser, searchUserApi } from '../../../redux/reducers/AdminUserReducer';
 
 interface DataType {
   id:                    number;
