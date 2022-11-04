@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { message } from "antd";
 import { Navigate } from "react-router-dom";
 import { history } from "../..";
 import {
@@ -100,7 +101,6 @@ export const getAllUser = () => {
     try {
       const response = await http.get("/api/users");
       let arrayUser: UserModal[] = response.data.content;
-      // console.log(arrayUser);
       const action = getArrayUser(arrayUser);
       dispatch(action);
     } catch (error) {}
@@ -129,10 +129,10 @@ export const loginApi = (userLogin: IdUser) => {
       } else {
         history.push("/profile");
       }
-      // alert('Đăng nhập thành công')
+      message.success('Đăng Nhập Thành Công')
+
     } catch (err) {
-      console.log(err);
-      alert("Đăng nhập thất bại");
+      message.error('Đăng Nhập Thất Bại')
     }
   };
 };
@@ -150,17 +150,19 @@ export const getUserApi = (id_user = getStore(ID_USER)) => {
     }
   };
 };
+//xoá user
 export const deleteUserApi = (id: any) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await http.delete(`/api/users?id=${id}`);
-      alert("xoá thành công");
+      message.success('Xoá Thành Công')
     } catch (err) {
-      console.log(err);
-      alert("Đăng nhập thất bại profile");
+      message.error('Xoá Thất Bại')
+
     }
   };
 };
+//thêm user
 export const creatUserApi = (values: UserModal) => {
   return async (dispatch: AppDispatch) => {
     try {
@@ -203,9 +205,6 @@ export const updateUserApi = (data: any) => {
 export const searchUserApi = (value: any) => {
   return async (dispatch: AppDispatch) => {
     try {
-      // if(value.trim() !== ''){
-
-      // }
       const response = await http.get(`/api/users/search/${value}`);
       console.log(response.data.content);
       let arraySearchUser: UserModal[] = response.data.content;

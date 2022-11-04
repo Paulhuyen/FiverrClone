@@ -14,7 +14,7 @@ import {
   ListComment,
 } from "../../redux/reducers/CommentReducer";
 import PriceDetail from "./PriceDetail";
-import { Collapse, Image, Progress } from "antd";
+import { Collapse, Image, Progress, Rate } from "antd";
 type Props = {};
 const { Panel } = Collapse;
 export default function Detail({}: Props) {
@@ -122,11 +122,8 @@ export default function Detail({}: Props) {
                   <div className="name-author item">{item.tenNguoiTao}</div>
                   <div className="rated item">Level 2 seller</div>
                   <div className="star item">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
+                  <Rate allowHalf defaultValue={item.congViec.saoCongViec} />
+
                   </div>
                   <div className="ratings-count item">
                     ( {item.congViec.danhGia} )

@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from '../../redux/configStore';
 import { ThueCongViecModal } from '../../redux/models/jobModel';
 import { deleteThueCongViecApi, getCongViecApi } from '../../redux/reducers/ProducReducers';
 import { getUserApi } from '../../redux/reducers/UserReducer';
-import { Modal } from 'antd';
+import { Modal, Rate } from 'antd';
 import { getIdJob } from '../../redux/reducers/AdminManageJobReducer';
 
 type Props = {}
@@ -46,6 +46,7 @@ export default function GigsProfile({}: Props) {
                 <div className="prod-title col-8">
                     <a href="#" className="prod-name">{congViecThue.congViec?.tenCongViec}</a>
                     <p className="prod-title">{congViecThue.congViec?.moTaNgan}</p>
+                    <div><Rate allowHalf defaultValue={2.5} /></div>
                     <div className="prod-footer d-flex">
                         <div className="btn-detail btn">View detail</div>
                         <div className="btn-edit btn" >Edit</div>

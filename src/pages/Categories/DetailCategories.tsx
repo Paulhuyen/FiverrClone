@@ -17,7 +17,6 @@ export default function DetailCategories() {
   const { arrJobCategories } = useSelector((state: RootState) => state.ProducReducers);
   console.log(arrJobCategories)
   // const arrayJobMenu = getStoreJson("arrJobCategories");
-  // let idThue = idJobCategories.id;
   // console.log('id thuê',idThue)
   const dispatch: AppDispatch = useDispatch();
   const params = useParams();
