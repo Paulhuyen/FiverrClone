@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import MenuPages from "../MenuPages/MenuPages";
-import SearchResult from "../Search/SearchResult";
 type Props = {};
 
 export default function JobsList({}: Props) {
@@ -83,7 +82,7 @@ export default function JobsList({}: Props) {
 
         <div className="result">
           <div className="row">
-            <SearchResult/>
+            
           </div>
         </div>
 

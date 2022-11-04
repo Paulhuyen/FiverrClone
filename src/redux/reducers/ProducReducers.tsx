@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { http } from "../../util/settings";
 import { AppDispatch } from "../configStore";
 // import React, {useRef, useState, useEffect} from "react";
-import { createSearchParams, NavLink, useSearchParams } from "react-router-dom";
+// import { createSearchParams, NavLink, useSearchParams } from "react-router-dom";
 import JobsList from "../../pages/JobList/JobList";
 
 export interface JobsList {
@@ -85,21 +85,21 @@ export default ProducReducers.reducer;
 
 // -------------- API --------------------------
 
-export const getJobListByName = (keyword?: string) => {
-  return async (dispatch: AppDispatch) => {
-    try {
-      const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${keyword}`);
-      console.log(result.data.content);
-        //sau khi lấy kq đưa lên redux
-        let arrJobList: ProductModel[] = result.data.content;
-        const action = getJobListByNameAction(arrJobList);
-        dispatch(action);
-        console.log("SEARCH RESULT", arrJobList);
-      } catch (err) {
-      console.log(err);
-    }
-  };
-};
+// export const getJobListByName = (keyword?: string) => {
+//   return async (dispatch: AppDispatch) => {
+//     try {
+//       const result = await http.get(`/cong-viec/lay-danh-sach-cong-viec-theo-ten/${keyword}`);
+//       console.log(result.data.content);
+//         //sau khi lấy kq đưa lên redux
+//         let arrJobList: ProductModel[] = result.data.content;
+//         const action = getJobListByNameAction(arrJobList);
+//         dispatch(action);
+//         console.log("SEARCH RESULT", arrJobList);
+//       } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// };
 
 export const getAllMenuLoaiCV = () => {
   return async (dispatch: AppDispatch) => {

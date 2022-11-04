@@ -6,7 +6,6 @@ import {
   StepForwardOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
-import Search from "../Search/Search";
 import WorkingIndustries from "../WorkingIndustries/WorkingIndustries";
 
 type Props = {
@@ -50,7 +49,7 @@ export default function Home({ title }: Props) {
                         </p>
                         <h1>services for your business</h1>
                       </div>
-                      <Search/>
+                      
                       <div className="popular d-flex mt-4">
                         <span>Popular:</span>
                         <a href="#">Website Design</a>
