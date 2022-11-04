@@ -1,15 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 type Props = {
-  title?: string;
-};
+    title?: string;
+}
 
-export default function Header(props: Props) {
+export default function HeaderMain({title}: Props) {
   return (
     <header>
       <div className="container">
-        <nav className="navbar navbar-expand-sm navbar-dark">
+        <nav className="navbar navbar-expand-sm navbar-dark nav-main">
           <NavLink className="navbar-brand d-flex" to="/home">
             <h4 className="logo">fiverr</h4>
             <span>
@@ -17,7 +17,7 @@ export default function Header(props: Props) {
             </span>
           </NavLink>
           
-          
+          {/* Search Button */}
 
           <div className="collapse navbar-collapse" id="collapsibleNavId">
             <ul className="navbar-nav mt-2 mt-lg-0">
@@ -47,5 +47,5 @@ export default function Header(props: Props) {
         </nav>
       </div>
     </header>
-  );
+  )
 }

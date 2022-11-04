@@ -70,14 +70,10 @@ const ProducReducers = createSlice({
       state.menuLoaiCV = action.payload;
     },
 
-    getJobListByNameAction: (state, action: PayloadAction<ProductModel[]>) => {
-      state.arrJobList = action.payload;
-    },
-
   },
 });
 
-export const { getAllChiTietLoaiCVAction, getAllMenuLoaiCVAction, getJobListByNameAction } =
+export const { getAllChiTietLoaiCVAction, getAllMenuLoaiCVAction } =
   ProducReducers.actions;
 
 export default ProducReducers.reducer;
