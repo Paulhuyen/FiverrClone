@@ -114,7 +114,7 @@ export default function MenuPages({}: Props) {
           <div className="fiverr-nav-right ">
             <ul>
               <li>
-                <NavLink to="/profile">Fiverr Business</NavLink>
+                <NavLink to="/joblist">Fiverr Business</NavLink>
               </li>
               <li>
                 <a href="/">Explore</a>

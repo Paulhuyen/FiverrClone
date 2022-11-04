@@ -16,7 +16,7 @@ import {
 export default function DetailCategories() {
   const { arrJobCategories } = useSelector((state: RootState) => state.ProducReducers);
   console.log(arrJobCategories)
-  // const arrayJobMenu = getStoreJson("arrJobCategories");
+  const arrayJobMenu = getStoreJson("arrJobCategories");
   // console.log('id thuê',idThue)
   const dispatch: AppDispatch = useDispatch();
   const params = useParams();
@@ -29,7 +29,7 @@ export default function DetailCategories() {
   }, [params.id]);
 
   const renderJobCategories = () => {
-    return arrJobCategories[0].dsNhomChiTietLoai?.map(
+    return arrayJobMenu[0].dsNhomChiTietLoai?.map(
       (item: DsNhomChiTietLoai) => {
         return (
           <div className="item-job" key={item.id}>

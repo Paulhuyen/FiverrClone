@@ -1,16 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
-import MenuPages from '../components/MenuPages/MenuPages'
+import HeaderHome from '../components/Header/HeaderHome'
 
 type Props = {}
 
 export default function HomeTemplate({}: Props) {
   return (
     <>
-      {/* <Header/> */}
-      <MenuPages/>
+      <HeaderHome/>
       <Outlet/>
       <Footer/>
     </>

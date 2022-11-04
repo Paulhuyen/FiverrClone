@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-// import './assets/styles'
+import './assets/styles.scss';
 //setup react router dom
 import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 import Home from './pages/Home/Home';
@@ -25,7 +25,11 @@ import ManageService from './pages/AdminPages/ManageService/ManageService';
 import ManageJobTypeDtail from './pages/AdminPages/ManageJobTypeDetail.tsx/ManageJobTypeDtail';
 // import Login from './pages/Login/login';
 // import Register from './pages/Register/Register';
+import JobList from './pages/JobList/JobList';
+import HeaderHome from './components/Header/HeaderHome';
+import MainTemplate from './templates/MainTemplate';
 export const history = createBrowserHistory({ window });
+
 
 
 
@@ -39,24 +43,32 @@ root.render(
     <HistoryRouter history={history}>
       <Routes>
         <Route path='' element={<HomeTemplate/>}>
-          <Route index element={<DemoProduct/>}></Route>
-          <Route path='categories'>
+          <Route index element={<Home/>}></Route>
+          <Route path='/' element={<Home/>}></Route>
+          {/* <Route path='categories'>
             <Route path=':id'  element={<DetailCategories/>}></Route>
-          </Route>
-          <Route path='demoprod' element={<DemoProduct/>}></Route>
-          <Route path='detail' >
+          </Route> */}
+          {/* <Route path='demoprod' element={<DemoProduct/>}></Route> */}
+          {/* <Route path='detail' >
             <Route path=':id' element={<Detail/>}></Route>
-          </Route>
-          <Route path='profile' element={<Profile/>}></Route>
+          </Route> */}
+          {/* <Route path='profile' element={<Profile/>}></Route>
           <Route path='logindemo' element={<LoginDemo/>}></Route>
-          <Route path='modaluser' element={<ModalManageUser/>}></Route>
+          <Route path='modaluser' element={<ModalManageUser/>}></Route> */}
           {/* <Route path='register' element={<Register/>}></Route> */}
           {/* <Route path='login' element={<Login/>}></Route> */}
           <Route path='*' element={<Navigate to=""/>}></Route>
         </Route>
-        {/* <Route path='/categories' element={<HomeTemplate/>}>
+        {/* <Route path='/categories' element={<MainTemplate/>}>
             <Route path=':id'  element={<DetailCategories/>}></Route>
         </Route> */}
+        <Route path='' element={<MainTemplate/>}>
+            <Route path='joblist' element={<JobList/>}></Route>
+            <Route path='categories'>
+               <Route path=':id'  element={<DetailCategories/>}></Route>
+            </Route>
+            <Route path='profile' element={<Profile/>}></Route>
+        </Route>
         <Route path='admin' element={<AdminTemplate/>}>
            <Route index element={<ManageUser/>}></Route>
            <Route path='managenmentjobtype' element={<ManageJob/>}></Route>
