@@ -1,10 +1,16 @@
 import {configureStore, PayloadAction} from '@reduxjs/toolkit';
 import ProducReducers from './reducers/ProducReducers';
+import userReducer from './reducers/userReducer';
+// import userLogin from './reducers/userLogin';
 
 
 export const store = configureStore({
     reducer: {
-        ProducReducers:ProducReducers
+        ProducReducers:ProducReducers,
+        userReducer : userReducer,
+        // userLogin : userLogin,
+        
+
     }
 })
 
