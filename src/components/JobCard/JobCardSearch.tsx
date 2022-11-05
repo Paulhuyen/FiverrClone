@@ -40,9 +40,11 @@ export default function JobCardSearch({}: Props) {
               </div>
               {/* tenCongViec */}
               <h3 style={{height: 120}}>
-                <NavLink className="jobName" to="/chi-tiet-cong-viec">
+                <a className="jobName" onClick={()=>{
+                    navigate(`/detail/${item.id}`)
+                    }}>
                   {item.congViec.tenCongViec}
-                </NavLink>
+                </a>
               </h3>
               <div className="rating">
                 <i className="fa fa-star" aria-hidden="true"></i>

@@ -68,14 +68,11 @@ export default function AdminTemplate({}: Props) {
               <div className="title">Quản Lý Loại Công Việc</div>
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="managejobtypedetail">
-              {/* <div className="icon">
-                <UserOutlined />
-              </div> */}
               <div className="title">Quản Lý Chi Tiết Loại Công Việc</div>
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="manageService">
               <div className="icon">

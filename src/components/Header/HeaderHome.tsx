@@ -28,12 +28,12 @@ export default function HeaderHome(title: Props) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
+                <NavLink className="nav-link" to="/register">
                   Sign in
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to="/signup">
+                <NavLink className="nav-link" to="/login">
                   <button
                     className="btn btn-outline-light my-2 my-sm-0"
                     type="submit"
