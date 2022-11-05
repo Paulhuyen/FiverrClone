@@ -114,6 +114,7 @@ export default function MenuPages({}: Props) {
       if(value){
         const action:any = searchJob(value)
         console.log('key search',value)
+         navigate(`/joblist`) 
         dispatch(action)
       }else{
         const action:any = getAllProduct()
@@ -135,8 +136,7 @@ export default function MenuPages({}: Props) {
               id="keywordRef"
               placeholder="What service are you looking for today?"
               className="ip-search"
-              onSearch={onSearch}
-              // onChange= (handleChange)
+              onSearch={onSearch}              
               enterButton
             />
           </div>
