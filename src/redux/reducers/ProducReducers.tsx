@@ -11,20 +11,8 @@ import {
 } from "../../util/settings";
 import { AppDispatch } from "../configStore";
 import { ThueCongViecModal } from "../models/jobModel";
-
-// import React, {useRef, useState, useEffect} from "react";
-// import { createSearchParams, NavLink, useSearchParams } from "react-router-dom";
 import JobsList from "../../pages/JobList/JobList";
 
-// export interface JobsList {
-//   id: number;
-//   congViec: ProductModel;
-//   tenLoaiCongViec: string;
-//   tenNhomChiTietLoai: string;
-//   tenChiTietLoai: string;
-//   tenNguoiTao: string;
-//   avatar: string;
-// }
 
 //Menu
 export interface JobMenu {
@@ -105,6 +93,8 @@ const initialState: any = {
   arrayJobMenu: [],
   arrJobCategories: [],
   congViecDaThue: [],
+  arraySearchJob:[],
+  arrseacrhRong: {}
 };
 
 const ProducReducers = createSlice({
@@ -132,6 +122,14 @@ const ProducReducers = createSlice({
     ) => {
       state.congViecDaThue = action.payload;
     },
+    //search
+    searchJobAction: (state, action: PayloadAction<JobDetail[]>) => {
+      state.arraySearchJob = action.payload;
+    },
+    // lấy công việc theo chi tiết loại ID
+    getAllChiTietLoaiCVAction: (state, action: PayloadAction<JobDetail[]>) => {
+      state.arraySearchJob = action.payload;
+    },
   },
 });
 
@@ -141,6 +139,8 @@ export const {
   getJobMenuAction,
   getJobCateAction,
   getCongViecDaThueAction,
+  searchJobAction,
+  getAllChiTietLoaiCVAction,
 } = ProducReducers.actions;
 
 export default ProducReducers.reducer;
@@ -169,20 +169,7 @@ export const getAllProductDetail = (id: any) => {
   };
 };
 
-// export const getAllChiTietLoaiCV = (id:number) => {
-//   return async (dispatch: AppDispatch) => {
-//     try {
-//       const result = await http.get(`/cong-viec/lay-chi-tiet-loai-cong-viec/${id}`);
-//       //sau khi lấy kq đưa lên redux
-//       let jobCategories: ProductModel[] = result.data.content;
-//       const action = getAllChiTietLoaiCVAction(jobCategories);
-//       dispatch(action);
-//       console.log("list categories", jobCategories);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-// };
+
 // getJobCate
 export const getJobCate = (id: any) => {
   return async (dispatch: AppDispatch) => {
@@ -261,5 +248,37 @@ export const getJobMenu = () => {
 
       dispatch(action);
     } catch (error) {}
+  };
+};
+///search
+export const searchJob= (value:any) => {
+  return async (dispatch:AppDispatch) => {
+      try {
+          const response = await http.get(`/api/cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`)
+          console.log(response.data.content);
+          let arraySearchJob : JobDetail[] = response.data.content;
+          // console.log(arrayJob?.congViec)
+          const action = searchJobAction(arraySearchJob)
+          dispatch(action)
+      }catch(err){
+          console.log(err);
+      }
+  }
+}
+//lấy công việc theo chi tiết loại
+export const getIdChiTietLoaiCV = (id:any) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const result = await http.get(`/api/cong-viec/lay-cong-viec-theo-chi-tiet-loai/${id}`);
+      //sau khi lấy kq đưa lên redux
+      console.log(result.data.contnet)
+      // let arrayChiTietLoaiCV: JobDetail[] = result.data.content;
+      // const action = getAllChiTietLoaiCVAction(arrayChiTietLoaiCV);
+      // dispatch(action);
+      // console.log(arrayChiTietLoaiCV);
+      console.log(id)
+    } catch (err) {
+      console.log(err);
+    }
   };
 };

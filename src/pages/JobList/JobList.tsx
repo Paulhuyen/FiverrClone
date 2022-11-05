@@ -1,10 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/configStore";
+import { useNavigate } from "react-router-dom";
+import { getAllProduct } from "../../redux/reducers/ProducReducers";
+import { Job } from "../../redux/models/jobModel";
+import JobCard from "../../components/JobCard/JobCard";
+import JobCardSearch from "../../components/JobCard/JobCardSearch";
 // import MenuPages from "../MenuPages/MenuPages";
 type Props = {};
 
 export default function JobsList({}: Props) {
-
+  const { arrayJob } = useSelector((state: RootState) => state.ProducReducers);
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const actionApi = getAllProduct();
+    dispatch(actionApi);
+  }, []);
+  // const renderCongViec = () => {
+  //   return arrayJob.map((item: Job, index: number) => {
+  //     return (
+  //       <div className="col-3 p-2" key={index}>
+  //         <div className="img">
+  //           <img src={item.hinhAnh} style={{ width: "100%" }} alt="" />
+  //         </div>
+  //         <div className="card-body">
+  //           <div className="information-author d-flex">
+  //             <img src="./img/avt.jpg" width={30} alt="" />
+  //             <div className="name-author">
+  //               <span>I'm Groot</span>
+  //               <br />
+  //               <span>Level 2</span>
+  //             </div>
+  //           </div>
+  //           <div className="title">
+  //             <a
+  //               href=""
+  //               style={{ color: "black" }}
+  //               onClick={() => {
+  //                 navigate(`/detail/${item.id}`);
+  //               }}
+  //             >
+  //               {item.tenCongViec}
+  //             </a>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     );
+  //   });
+  // };
   return (
     <div className="container">
       {/* <MenuPages /> */}
@@ -21,7 +66,6 @@ export default function JobsList({}: Props) {
         </div>
       </div>
       {/* <DetailCategories/> */}
-
       <div className="banner-page-category">
         <div className="banner-page">
           <div className="banner-content">
@@ -81,49 +125,12 @@ export default function JobsList({}: Props) {
         {/* Render Search Result */}
 
         <div className="result">
-          <div className="row">
-            
-          </div>
+          {/* <div className="row">{renderCongViec()}</div> */}
+          <JobCardSearch/>
+          <hr />
+          {/* <h4 style={{fontWeight:600}}>List Job</h4> 
+          <JobCard/> */}
         </div>
-
-
-
-        {/* <div className="carousel-category">
-          <h4 className="text-title">Most popular in Graphics & Design</h4>
-          <div className="slider"></div>
-        </div> */}
-        {/* <div className="product-categories "> */}
-        {/* <h4 className="text-title">Explore Graphics & Design</h4> */}
-        {/* <div className="prod-list row">
-            <div className="product-item"> */}
-        {/* <div className="card-img">
-                <img src="./img/prod1.webp" alt="" />
-              </div> */}
-        {/* <div className="card-body">
-                <p className="card-name">Logo & Brand Identity</p>
-              </div> */}
-        {/* <div className="card-footer"> */}
-        {/* <div className="items-content">
-                  <p>Logo Design</p>
-                  <ArrowRightOutlined />
-                </div> */}
-        {/* <div className="items-content">
-                  <p>Brand Style Guides</p>
-                  <ArrowRightOutlined />
-                </div> */}
-        {/* <div className="items-content">
-                  <p>Fonts & Typography</p>
-                  <ArrowRightOutlined />
-                </div> */}
-        {/* <div className="items-content">
-                  <p>Business Cards & Stationery</p> */}
-        {/* <i class="fa fa-arrow-right" aria-hidden="true"></i> */}
-        {/* <ArrowRightOutlined /> */}
-        {/* </div> */}
-        {/* </div> */}
-        {/* </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

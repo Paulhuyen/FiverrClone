@@ -10,23 +10,28 @@ import { history } from '../../index';
 import {
   DsChiTietLoai,
   DsNhomChiTietLoai,
+  getAllProduct,
+  getIdChiTietLoaiCV,
   getJobCate,
   getJobMenu,
   JobMenu,
+  searchJob,
 } from "../../redux/reducers/ProducReducers";
-import { ACCESS_TOKEN, USER_LOGIN } from "../../util/settings";
-import { signOutAction } from "../../redux/reducers/AdminUserReducer";
+import { ACCESS_TOKEN, getStoreJson, USER_LOGIN } from "../../util/settings";
+import { getAllUser, signOutAction } from "../../redux/reducers/AdminUserReducer";
+import { searchNameJob } from "../../redux/reducers/AdminManageJobReducer";
 type Props = {};
 const { Search } = Input;
 
 const onSearch = (value: string) => console.log(value);
 export default function MenuPages({}: Props) {
   const { arrayJobMenu } = useSelector((state: RootState) => state.ProducReducers);
-  const { userLogin } = useSelector((state: RootState) => state.UserReducer);
+  const userLogin = getStoreJson('userLogin')
+
+  
   function logOut(){
     localStorage.clear();
-    history.push('/home')
-    dispatch(signOutAction(userLogin));
+    history.push('/')
   }
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,17 +53,23 @@ export default function MenuPages({}: Props) {
             {menuPages.tenLoaiCongViec}
           </a>
           <div className="sub-menu">
-            <ul>
+            <ul className="row">
               {menuPages.dsNhomChiTietLoai?.map(
                 (itemSub: DsNhomChiTietLoai) => {
                   return (
-                    <li key={itemSub.id}>
+                    <li key={itemSub.id} className="col-4">
                       <a href="" className="tenNhom">
                         {itemSub.tenNhom}
                       </a>
                       {itemSub.dsChiTietLoai.map((itemSubS: DsChiTietLoai) => {
                         return (
-                          <a href="#" key={itemSubS.id}>
+                          <a  key={itemSubS.id}
+                          onClick={()=>{
+                            navigate(`/joblist/${itemSubS.id}`);
+                            const action:any = getIdChiTietLoaiCV(itemSub.id);
+                            dispatch(action)
+                          }}
+                          >
                             {itemSubS.tenChiTiet}
                           </a>
                         );
@@ -76,34 +87,48 @@ export default function MenuPages({}: Props) {
 
   const renderUserLogin = () =>{
     if(userLogin == null){
-      return<NavLink to={'/logindemo'}>Login</NavLink>
+      return<NavLink to={'/login'} className="login_header">Login</NavLink>
     }else{
       return<li>
-       <div className="dropdown open">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {userLogin.name}
-          </button>
-          <div className="dropdown-menu" aria-labelledby="triggerId">
-            <NavLink className="dropdown-item " to="/"><button onClick={logOut}>Đăng Xuất</button></NavLink>
-            <NavLink className="dropdown-item" to="/profile">Profile</NavLink>
+        <div className="avata_user_login">
+          <img src={userLogin?.avatar} alt="avatar" />
+            <div className="sub_login">
+              <li><NavLink to="/profile">Profile</NavLink></li>
+              <li><a href="">Manage Request</a></li>
+              <hr />
+              <li><a href="">Become a Seller</a></li>
+              <li><a href="">Seting</a></li>
+              <hr />
+              <li><button className="btn btn_logout" onClick={logOut}>Logout</button></li>
           </div>
         </div>
-
       </li> 
     }
   }
+    //search
+    const onSearch = (value: string) => {
+      if(value){
+        const action:any = searchJob(value)
+        console.log('key search',value)
+        dispatch(action)
+      }else{
+        const action:any = getAllProduct()
+        dispatch(action)
+      }
+    };
   return (
     <>
       <div className="header-fiverr container">
         <div className="header-wrapper">
           <div className="logo">
-            <a href="/demoprod">
+            <a href="/">
               <img src="./img/Fiverr_logo.png" alt="" />
             </a>
           </div>
           <div className="fiverr-header-search">
 
             <Search
+              id="keywordRef"
               placeholder="What service are you looking for today?"
               className="ip-search"
               onSearch={onSearch}
@@ -114,7 +139,7 @@ export default function MenuPages({}: Props) {
           <div className="fiverr-nav-right ">
             <ul>
               <li>
-                <NavLink to="/joblist">Fiverr Business</NavLink>
+                <NavLink to="/profile">Fiverr Business</NavLink>
               </li>
               <li>
                 <a href="/">Explore</a>
@@ -129,11 +154,6 @@ export default function MenuPages({}: Props) {
                 <a href="/">Become a seller</a>
               </li>
                 {renderUserLogin()}
-                {/* <NavLink to="/logindemo">Login </NavLink> */}
-              {/* <li>{userLogin.name}</li> */}
-              {/* <li>
-                  <div className="avata-user"><img src="./img/avt.jpg" style={{width:50, height:50, objectFit:'cover', borderRadius:50}} alt="" /></div>
-                </li> */}
             </ul>
           </div>
         </div>

@@ -182,6 +182,7 @@ export const editUserApi = (id: any) => {
       const response = await http.get(`/api/users/${id}`);
       console.log("user cần edit", response.data.content);
       const action = editUserApiAction(response.data.content);
+      alert('od')
       dispatch(action);
     } catch (err) {
       console.log(err);

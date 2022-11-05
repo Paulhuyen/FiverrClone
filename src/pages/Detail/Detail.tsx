@@ -293,19 +293,15 @@ export default function Detail({}: Props) {
                   <div className="profile-info">
                     <div className="user-profile-img">
                       <img
-                        src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/b4a123cf1457d8402a6e16da5eb1f78a-1657868645692/8bcaba6c-3c85-45a3-8f52-341b08e851b5.JPG"
+                        src={item.avatar}
                         alt=""
                       />
                     </div>
                     <div className="user-profile-label">
-                      <p>Omerrbyrk</p>
+                      <p>{item.tenNguoiTao}</p>
                       <p>Senior Flutter Developer</p>
                       <ul>
-                        <StarFilled />
-                        <StarFilled />
-                        <StarFilled />
-                        <StarFilled />
-                        <StarFilled />
+                      <Rate allowHalf defaultValue={3} />
                       </ul>
                       <button className="btn-cl-me">Contact Me</button>
                     </div>

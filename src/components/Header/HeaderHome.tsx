@@ -10,12 +10,12 @@ export default function HeaderHome(title: Props) {
     <header>
       <div className="container">
         <nav className="navbar navbar-expand-sm navbar-dark nav-home">
-          <NavLink className="navbar-brand d-flex" to="/home">
+          <a className="navbar-brand d-flex" href="/home">
             <h4 className="logo">fiverr</h4>
             <span>
               <i className="fa fa-circle" aria-hidden="true"></i>
             </span>
-          </NavLink>
+          </a>
           
           {/* Search Button */}
 

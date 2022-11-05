@@ -86,3 +86,18 @@ export interface ThueCongViecModal {
   ngayThue:    string;
   hoanThanh:   boolean;
 }
+//User
+export interface UserModal {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  phone: number;
+  birthday: string;
+  avatar: string;
+  gender: boolean;
+  role: string;
+  skill: string[];
+  certification: string[];
+  bookingJob: string[];
+}

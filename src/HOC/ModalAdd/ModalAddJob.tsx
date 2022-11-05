@@ -5,9 +5,11 @@ import React, { useState, useRef, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { postJob } from "../../redux/reducers/AdminManageJobReducer";
+import { getStoreJson } from "../../util/settings";
 
 const { TextArea } = Input;
 export default function ModalAddJob() {
+  let id_User = getStoreJson('id_User')
   const dispatch = useDispatch();
   const frm = useFormik({
     initialValues: {
@@ -15,7 +17,7 @@ export default function ModalAddJob() {
       tenCongViec: "",
       danhGia: "",
       giaTien: "",
-      nguoiTao: "",
+      nguoiTao: id_User,
       hinhAnh: "",
       moTa: "",
       maChiTietLoaiCongViec: "",
@@ -26,7 +28,7 @@ export default function ModalAddJob() {
       tenCongViec: Yup.string().required("không được bỏ trống !"),
     }),
     onSubmit: (values: any) => {
-      console.log("VALUE ADD JOB", values);
+      console.log(values)
       const action: any = postJob(values);
       dispatch(action);
     },
@@ -67,6 +69,16 @@ export default function ModalAddJob() {
               type="text"
               name="danhGia"
               id="danhGia"
+              onChange={frm.handleChange}
+              onBlur={frm.handleBlur}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="">Người Tạo</label>
+            <Input
+              type="text"
+              name="nguoiTao"
+              id="nguoiTao"
               onChange={frm.handleChange}
               onBlur={frm.handleBlur}
             />

@@ -28,6 +28,9 @@ import ManageJobTypeDtail from './pages/AdminPages/ManageJobTypeDetail.tsx/Manag
 import JobList from './pages/JobList/JobList';
 import HeaderHome from './components/Header/HeaderHome';
 import MainTemplate from './templates/MainTemplate';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import JobsList from './pages/JobList/JobList';
 export const history = createBrowserHistory({ window });
 
 
@@ -45,29 +48,23 @@ root.render(
         <Route path='' element={<HomeTemplate/>}>
           <Route index element={<Home/>}></Route>
           <Route path='/' element={<Home/>}></Route>
-          {/* <Route path='categories'>
-            <Route path=':id'  element={<DetailCategories/>}></Route>
-          </Route> */}
-          {/* <Route path='demoprod' element={<DemoProduct/>}></Route> */}
-          {/* <Route path='detail' >
-            <Route path=':id' element={<Detail/>}></Route>
-          </Route> */}
-          {/* <Route path='profile' element={<Profile/>}></Route>
-          <Route path='logindemo' element={<LoginDemo/>}></Route>
-          <Route path='modaluser' element={<ModalManageUser/>}></Route> */}
-          {/* <Route path='register' element={<Register/>}></Route> */}
-          {/* <Route path='login' element={<Login/>}></Route> */}
           <Route path='*' element={<Navigate to=""/>}></Route>
         </Route>
-        {/* <Route path='/categories' element={<MainTemplate/>}>
-            <Route path=':id'  element={<DetailCategories/>}></Route>
-        </Route> */}
+
         <Route path='' element={<MainTemplate/>}>
             <Route path='joblist' element={<JobList/>}></Route>
             <Route path='categories'>
                <Route path=':id'  element={<DetailCategories/>}></Route>
             </Route>
+            <Route path='detail' >
+                <Route path=':id' element={<Detail/>}></Route>
+            </Route>
+            <Route path='joblist' >
+                <Route path=':id' element={<JobsList/>}></Route>
+            </Route>
             <Route path='profile' element={<Profile/>}></Route>
+            <Route path='login' element={<Login/>}></Route>
+            <Route path='register' element={<Register/>}></Route>
         </Route>
         <Route path='admin' element={<AdminTemplate/>}>
            <Route index element={<ManageUser/>}></Route>

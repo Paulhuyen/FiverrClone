@@ -35,9 +35,64 @@
                     color: $cl-hover-1;
                 }
             }
+            .login_header{
+                padding:5px 15px;
+                 border:1px solid $cl-fiverr;
+                 color: $cl-text;
+                 background-color: $cl-primary;
+                color: $cl-text-white;
+                border-radius: 5px;
 
             }
+            .login_header:hover{
+                background-color: $cl-fiverr;
+                color: $cl-text-white;
+                border-radius: 5px;
+            }
+            .avata_user_login{
+                position: relative;
+                img{
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    border: 2px solid $cl-fiverr;
+                }
+                .sub_login{
+                    display: none;
+                    background-color: white;
+                    border: 1px solid rgb(211, 211, 211);
+                    position: absolute;
+                    width: 180px;
+                    padding: 10px;
+                    box-shadow: 3px 6px 4px $bg-profile-border;
+                    top: 70px;
+                    right: 10px;
+                    .btn_logout:hover{
+                        color: $cl-fiverr;
+                    }
+                }
+                .sub_login::after{
+                    position: absolute;
+                    top: -12px;
+                    right: 10px;
+                    content: "";
+                    width: 23px;
+                    height: 23px;
+                    transform: rotate(45deg);
+                    border-top: 1px solid $bg-profile-border;
+                    border-left: 1px solid $bg-profile-border;
+                    background-color: white;
+                }
 
+            }
+            .avata_user_login:hover{
+                .sub_login{
+                    display: block;
+                }
+            }
+
+            }
         }
     }
 }
@@ -51,35 +106,42 @@
             justify-content: space-between;
             margin: auto;
             padding-left: 0;
+            position: relative;
+
             li{
-                padding: 10px;
-                position: relative;
+                padding: 9px;
                 a{
                     color:$cl-text ;
                 }
                 a:hover{
                     color: $cl-hover-1;
+                    border-bottom: 5px solid $cl-hover-2;
+                    padding: 11px 0;
+                    transition: ease-in-out 0.2s;
                 }
                 .sub-menu{
-                    position: absolute;
-                    left: -20px;
-                    top: 47px;
+                    position: absolute;  
+                    padding-top:4px ;
+                    left: 0;
+                    top: 40px;
                     display: none;
                     z-index: 99;
                     ul{
                         z-index: 20;
                         border: 1px solid rgb(122, 122, 122);
+                        width: 1200px;
                         padding: 0px 20px;
-                        display: grid;
-                        grid-template-columns: auto auto auto;
+                        display: flex;
+                        text-align: center;
                         background-color: white;
+                        justify-content: center;
                         li{
-                            min-width: 300px;
                             height: auto;
+                            padding: 10px 0 ;
                             a{
                                 display: block;
                                 p{
-                                    padding-bottom: 0;
+                                    padding-bottom: 5px;
                                 }
                             }
                             .tenNhom{
@@ -89,6 +151,8 @@
                             }
                             a:hover{
                                 color: $cl-hover-1;
+                                border-bottom: none;
+                                padding: 0;
                             }
                         }
                     }

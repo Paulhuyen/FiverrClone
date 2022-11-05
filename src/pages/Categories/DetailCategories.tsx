@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ArrowRightOutlined, RightOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState  } from "../../redux/configStore";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getStoreJson } from "../../util/settings";
 // import Slider from 'react-slick'
 import 'keen-slider/keen-slider.min.css'
@@ -10,6 +10,7 @@ import { useKeenSlider } from 'keen-slider/react'
 import {
   DsChiTietLoai,
   DsNhomChiTietLoai,
+  getIdChiTietLoaiCV,
   getJobCate
 } from "../../redux/reducers/ProducReducers";
 
@@ -20,6 +21,8 @@ export default function DetailCategories() {
   // console.log('id thuê',idThue)
   const dispatch: AppDispatch = useDispatch();
   const params = useParams();
+  const navigate = useNavigate();
+
   console.log('params',params)
   useEffect(() => {
     let { id } = params;
@@ -40,10 +43,15 @@ export default function DetailCategories() {
             <div className="card-footer">
               <ul>
                 {item.dsChiTietLoai?.map(
-                  (itemds: DsChiTietLoai, index: number) => {
+                  (itemds: DsChiTietLoai) => {
                     return (
-                      <li key={index}>
-                        <p>{itemds.tenChiTiet}</p>
+                      <li >
+                        <p key={itemds.id} onClick={()=>{
+                            navigate(`/joblist/${itemds.id}`)
+                            const action:any = getIdChiTietLoaiCV(itemds.id);
+                            dispatch(action)
+                          }}
+                        >{itemds.tenChiTiet}</p>
                         <ArrowRightOutlined className="icon" />
                       </li>
                     );
@@ -109,45 +117,6 @@ export default function DetailCategories() {
                <span className="icon-right"><ArrowRightOutlined /></span>
 
             </div>
-            {/* <div className="item-slider">
-               <a href=""><img src="/img/item-cr5.webp" alt="" /></a>
-               <span>Video Afs & Commerclals</span>
-               <span><RightOutlined /></span>
-            </div>
-            <div className="item-slider">
-               <a href=""><img src="/img/item-cr3.webp" alt="" /></a>
-               <span>Video Editing</span>
-               <span><RightOutlined /></span>
-            </div> */}
-          {/* <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-          <div>
-            <h3>9</h3>
-          </div>
-          </Slider> */}
           </div>
         </div>
         {/* show list job */}

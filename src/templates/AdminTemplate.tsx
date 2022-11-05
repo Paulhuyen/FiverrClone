@@ -13,9 +13,32 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
+import { getStoreJson } from "../util/settings";
+import { history } from "..";
+
 type Props = {};
 
 export default function AdminTemplate({}: Props) {
+  const userLogin = getStoreJson('userLogin');
+  function logOut(){
+    localStorage.clear();
+    history.push('/')
+  }
+  const renderUserLogin = () =>{
+    if(userLogin == null){
+      return<NavLink to={'/login'} className="login_header">Login</NavLink>
+    }else{
+      return<li>
+        <div className="avata_user_login">
+          <img src={userLogin?.avatar} alt="avatar" />
+            <div className="sub_login">
+              <li><NavLink to="/profile">Profile</NavLink></li>
+              <li><a href="">Manage Request</a></li>
+              <li><button className="btn btn_logout" onClick={logOut}>Logout</button></li>
+          </div>
+        </div>
+      </li> 
+    }}
   return (
     <div className="section">
       <div className="dashboard_menu">
@@ -67,29 +90,7 @@ export default function AdminTemplate({}: Props) {
       <div className="header">
         <div className="header_top">
           <div className="user-manage d-flex">
-            <div className="dropdown">
-              <div
-                className="dropdown-toggle"
-                id="dropdownMenu2"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img style={{width:60, height:60}} src="./img/avt.jpg" alt="..." />
-                <span className="mx-2">Huyến</span>
-              </div>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li>
-                  <button className="dropdown-item" type="button">
-                    Cập Nhập Thông Tin
-                  </button>
-                </li>
-                <li>
-                  <button className="dropdown-item" type="button">
-                    Đăng Xuất
-                  </button>
-                </li>
-              </ul>
-            </div>
+            {renderUserLogin()}
           </div>
         </div>
         <div className="header-body">
