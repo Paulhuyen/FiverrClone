@@ -1,13 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import MenuPages from "../MenuPages/MenuPages";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/configStore";
+import { useNavigate } from "react-router-dom";
+import { getAllProduct } from "../../redux/reducers/ProducReducers";
+import { Job } from "../../redux/models/jobModel";
+import JobCard from "../../components/JobCard/JobCard";
+import JobCardSearch from "../../components/JobCard/JobCardSearch";
+// import MenuPages from "../MenuPages/MenuPages";
 type Props = {};
 
 export default function JobsList({}: Props) {
+  const { arrayJob } = useSelector((state: RootState) => state.ProducReducers);
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const actionApi = getAllProduct();
+    dispatch(actionApi);
+  }, []);
+  // const renderCongViec = () => {
+  //   return arrayJob.map((item: Job, index: number) => {
+  //     return (
+  //       <div className="col-3 p-2" key={index}>
+  //         <div className="img">
+  //           <img src={item.hinhAnh} style={{ width: "100%" }} alt="" />
+  //         </div>
+  //         <div className="card-body">
+  //           <div className="information-author d-flex">
+  //             <img src="./img/avt.jpg" width={30} alt="" />
+  //             <div className="name-author">
+  //               <span>I'm Groot</span>
+  //               <br />
+  //               <span>Level 2</span>
+  //             </div>
+  //           </div>
+  //           <div className="title">
+  //             <a
+  //               href=""
+  //               style={{ color: "black" }}
+  //               onClick={() => {
+  //                 navigate(`/detail/${item.id}`);
+  //               }}
+  //             >
+  //               {item.tenCongViec}
+  //             </a>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     );
+  //   });
+  // };
   return (
     <div className="container">
-      <MenuPages />
+      {/* <MenuPages /> */}
 
       <div className="suggested">
         <div className="container d-flex">
@@ -21,7 +66,6 @@ export default function JobsList({}: Props) {
         </div>
       </div>
       {/* <DetailCategories/> */}
-
       <div className="banner-page-category">
         <div className="banner-page">
           <div className="banner-content">
@@ -80,52 +124,12 @@ export default function JobsList({}: Props) {
 
         {/* Render Job Card Result */}
 
-        <div className="job-card-result">
-          <div className="row">
-            <div className="col-4">
-              <div className="item">
-                <NavLink className="top" to="/chi-tiet-cong-viec">
-                  {/* hinhAnh */}
-                  <img src="./img/jobs/LogoDesign.webp" alt="..." />
-                </NavLink>
-                <div className="center">
-                  <div className="accountHolder d-flex">
-                    <div className="avatar">
-                      {/* avatar */}
-                      <img src="./img/jobs/SEO.webp" alt="..." />
-                    </div>
-                    <div className="accountName">
-                      {/* tenNguoiTao */}
-                      <a href="#">Tên Người tạo</a>
-                      <p>Level 2 Seller</p>
-                    </div>
-                  </div>
-                  {/* tenCongViec */}
-                  <h3 style={{height:120}}>
-                    <NavLink className="jobName" to="/chi-tiet-cong-viec">
-                      I will design an outstanding logo with a high quality so that you can feel appointed
-                    </NavLink>
-                  </h3>
-                  <div className="rating">
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    {/* saoCongViec */}
-                    <span>5.0</span>
-                    {/* danhGia */}
-                    <p>(danhGia - 623)</p>
-                  </div>
-                </div>
-                <div className="bottom d-flex">
-                  <i className="fa fa-heart" aria-hidden="true"></i>
-                  <div className="price d-flex">
-                    <p>STARTING AT</p>
-                    {/* giaTien */}
-                    <span>$15</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        <div className="result">
+          {/* <div className="row">{renderCongViec()}</div> */}
+          <JobCardSearch/>
+          <hr />
+          {/* <h4 style={{fontWeight:600}}>List Job</h4> 
+          <JobCard/> */}
         </div>
       </div>
     </div>

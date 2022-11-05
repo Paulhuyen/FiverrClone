@@ -11,6 +11,8 @@
 
 // Carousel + Search
 .slider {
+  
+  min-width: 100%;
   .container {
     .carousel {
       position: initial;
@@ -38,7 +40,7 @@
                 .icon {
                   width: 50px;
                   display: inline-block;
-                  height: 50px;
+                  height: 48px;
                   line-height: 50px;
                   padding-left: 15px;
                   border: solid 1px white;
@@ -63,7 +65,7 @@
                   border: solid 2px $bg-button;
                   border-left: none;
                   border-radius: 0 5px 5px 0;
-                  padding: 12px 30px 8.5px 30px;
+                  padding: 11px 30px 8px 30px;
                   background-color: $bg-button;
                   color: $cl-text-white;
                   &:hover {
@@ -163,10 +165,10 @@
     margin-top: 70px;
     margin-bottom: 70px;
     .container {
-      padding-left: 32px;
-      padding-right: 32px;
-      margin-left: 50px;
-      margin-right: 50px;
+      // padding-left: 32px;
+      // padding-right: 32px;
+      // margin-left: 50px;
+      // margin-right: 50px;
       h2 {
         color: $c2-text-black;
         font-weight: $f-weight-700;
@@ -209,10 +211,10 @@
   .freelance-info {
     background-color: $bg-freelance-info;
     .container {
-      padding-left: 32px;
-      padding-right: 32px;
-      margin-left: 50px;
-      margin-right: 50px;
+      // padding-left: 32px;
+      // padding-right: 32px;
+      // margin-left: 50px;
+      // margin-right: 50px;
       .row {
         padding: 70px 0;
         .col {
@@ -280,9 +282,11 @@
   // Marketplace
 .marketplace{
   border-bottom: 1px solid $cl-text-grey;
+  margin-bottom: 680px;
+  height: auto;
   .container{
-    margin-left: 50px;
-    margin-right: 50px;
+    // margin-left: 50px;
+    // margin-right: 50px;
     padding: 70px 32px 0 32px;
     .comments{
       margin-bottom: 70px;
@@ -362,6 +366,46 @@
           }
         }
       }
+    }
+  }
+}
+
+.form {
+  margin-top: 15px;
+  .icon {
+    width: 50px;
+    display: inline-block;
+    height: 48px;
+    line-height: 50px;
+    padding-left: 15px;
+    border: solid 1px white;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: $bg-white;
+    margin: 1px 0;
+    .svg-inline--fa {
+      font-size: $text-20;
+    }
+  }
+  input {
+    padding: 13px 200px 8.5px 0px;
+    border: solid 1px white;
+    border-right: none;
+    border-left: none;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  button {
+    border: solid 2px $bg-button;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    padding: 12px 30px 8.5px 30px;
+    background-color: $bg-button;
+    color: $cl-text-white;
+    &:hover {
+      background-color: $bg-button-hover;
+      border-color: $bg-button-hover;
     }
   }
 }
