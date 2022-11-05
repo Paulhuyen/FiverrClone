@@ -92,7 +92,7 @@ export default function DetailCategories() {
         <div className="carousel-section">
           <div className="control-wrapper">
             <div className="control-wrapper_left"><h3>Most popular in {arrJobCategories.tenLoaiCongViec}</h3></div>
-            <div className="control-wrapper_right">ok se</div>
+            <div className="control-wrapper_right"></div>
           </div>
           <div className="slides-list">
             <div className="item-slider">

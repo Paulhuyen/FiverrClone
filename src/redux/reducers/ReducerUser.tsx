@@ -24,7 +24,7 @@ export const singUpApi = (values: UserModal) => {
       try {
         const response = await http.post("/api/auth/signup", values);
         console.log(response.data.content);
-        alert("Thêm thành công");
+        message.success("Đăng Ký Thành Công");
       } catch (err) {
         console.log(err);
         alert("Thất bại");

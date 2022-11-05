@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { message } from 'antd';
 import { http } from '../../util/settings';
 import { AppDispatch } from '../configStore';
 import { ThueCongViecModal } from '../models/jobModel';
@@ -32,7 +33,7 @@ export const getAllServiceApi = ()=>{
         const response = await http.get('api/thue-cong-viec');
         let arrService: ThueCongViecModal[] = response.data.content;
         const action = getAllServiceApiAction(arrService);
-        console.log('data cong việc thuê', arrService)
+        // console.log('data cong việc thuê', arrService)
         dispatch(action);
         } catch (error) {
         }
@@ -43,7 +44,7 @@ export const deletelIdServiceApi = (id:any)=>{
     return async (dispatch: AppDispatch) =>{
       try {
         const response = await http.delete(`api/thue-cong-viec/${id}`);
-        alert('xoá thành công')
+        message.success('xoá thành công')
         } catch (error) {
         alert('xoá không thành công')
 
@@ -59,12 +60,7 @@ export const getIdServiceApi = (id:any)=>{
         let getIdService: ThueCongViecModal[] = response.data.content;
         const action = getIdServiceApiAction(getIdService);
         dispatch(action);
-        console.log('id cong việc thuê', getIdService)
-
-        alert('lấy id thành công')
         } catch (error) {
-        alert('lấy id không thành công')
-
         }
       }
 }
@@ -73,7 +69,7 @@ export const updateIdService = (data:any)=>{
     return async (dispatch: AppDispatch) =>{
       try {
         const response = await http.put(`api/thue-cong-viec/${data.id}`, data);
-        alert('update thành công')
+        message.success('update thành công')
         } catch (error) {
         alert('update không thành công')
 

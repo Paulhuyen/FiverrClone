@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { message } from 'antd';
 import { http } from '../../util/settings';
 import { AppDispatch } from '../configStore';
 import { ModalJob } from '../models/jobModel';
@@ -48,10 +49,10 @@ export const postJobTypeApi = (value:any)=>{
       const response = await http.post('/api/loai-cong-viec',value);
       let arrJobType: ModalJob[] = response.data.content;
       const action = postJobTypeApiAction(arrJobType);
-      alert('Thêm loại công việc thành công')
+      message.success('Thêm thành công')
       dispatch(action);
       } catch (error) {
-       alert('Thêm loại công việc không thành công')
+       message.error('Thêm không thành công')
 
       }
     }
@@ -61,7 +62,7 @@ export const deleteJobTypeApi = (id:any)=>{
   return async (dispatch: AppDispatch) =>{
     try {
       const response = await http.delete(`/api/loai-cong-viec/${id}`);
-      alert('xoá thành công')
+      message.success('xoá thành công')
       } catch (error) {
       alert('xoá thất bại')
 
@@ -85,7 +86,7 @@ export const updateIdJobType= (data:any) => {
   return async (dispatch:AppDispatch) => {
       try {
           const response = await http.put(`/api/loai-cong-viec/${data.id}`,data)
-          alert('update thành công');
+          message.success('update thành công');
       }catch(err){
           console.log(err);
           alert('update Thất bại')

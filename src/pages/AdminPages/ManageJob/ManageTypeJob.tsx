@@ -67,6 +67,7 @@ export default function ManageJob({}: Props) {
   };
   return (
     <div className='main'>
+      <h2>Quản Lý Công Việc</h2>
       <main>
        <Button type="primary" onClick={showDefaultDrawer}>
           Add Job

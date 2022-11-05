@@ -39,7 +39,7 @@ export default function JobCardSearch({}: Props) {
                 </div>
               </div>
               {/* tenCongViec */}
-              <h3 style={{height: 120}}>
+              <h3 className='job-name'>
                 <a className="jobName" onClick={()=>{
                     navigate(`/detail/${item.id}`)
                     }}>

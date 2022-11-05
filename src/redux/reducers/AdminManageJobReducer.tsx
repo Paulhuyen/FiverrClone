@@ -109,7 +109,6 @@ export const searchNameJob= (value:any) => {
           dispatch(action)
       }catch(err){
           console.log(err);
-          alert('update Thất bại')
       }
   }
 }

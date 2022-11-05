@@ -26,7 +26,6 @@ export default function ModalManageUser() {
     onSubmit: (data: any) => {
       console.log("data", data.id);
       const action: any = updateUserApi(data);
-      alert("thanh cong");
       dispatch(action);
     },
   });

@@ -48,6 +48,11 @@
                   }
                 }
                 h3{
+                  width: 100%;                  
+                  // overflow: hidden;
+                  // text-overflow: ellipsis;
+                  // white-space: nowrap;
+                  height: 110px;
                   a{
                    font-size: $text-18;
                    font-weight: $f-weight-500;

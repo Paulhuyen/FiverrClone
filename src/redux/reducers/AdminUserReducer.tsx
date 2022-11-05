@@ -168,7 +168,7 @@ export const creatUserApi = (values: UserModal) => {
     try {
       const response = await http.post("/api/users", values);
       console.log(response.data.content);
-      alert("Thêm thành công");
+      message.success("Thêm thành công");
     } catch (err) {
       console.log(err);
       alert("Thất bại");
@@ -182,11 +182,10 @@ export const editUserApi = (id: any) => {
       const response = await http.get(`/api/users/${id}`);
       console.log("user cần edit", response.data.content);
       const action = editUserApiAction(response.data.content);
-      alert('od')
+      message.success('Xoá Thành Công')
       dispatch(action);
     } catch (err) {
       console.log(err);
-      alert("Thất bại");
     }
   };
 };
