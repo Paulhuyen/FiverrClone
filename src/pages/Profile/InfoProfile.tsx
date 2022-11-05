@@ -7,7 +7,6 @@ import { getCongViecApi } from "../../redux/reducers/ProducReducers";
 import {
   editUserApi,
   getUserApi,
-  updateAvatar,
   updateUserApi,
 } from "../../redux/reducers/AdminUserReducer";
 import { updateAvatar3 } from "../../redux/reducers/ReducerUser";

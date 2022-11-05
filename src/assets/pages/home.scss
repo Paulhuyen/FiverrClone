@@ -369,3 +369,43 @@
     }
   }
 }
+
+.form {
+  margin-top: 15px;
+  .icon {
+    width: 50px;
+    display: inline-block;
+    height: 48px;
+    line-height: 50px;
+    padding-left: 15px;
+    border: solid 1px white;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: $bg-white;
+    margin: 1px 0;
+    .svg-inline--fa {
+      font-size: $text-20;
+    }
+  }
+  input {
+    padding: 13px 200px 8.5px 0px;
+    border: solid 1px white;
+    border-right: none;
+    border-left: none;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  button {
+    border: solid 2px $bg-button;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    padding: 12px 30px 8.5px 30px;
+    background-color: $bg-button;
+    color: $cl-text-white;
+    &:hover {
+      background-color: $bg-button-hover;
+      border-color: $bg-button-hover;
+    }
+  }
+}

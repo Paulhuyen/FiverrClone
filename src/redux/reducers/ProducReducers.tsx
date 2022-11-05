@@ -271,7 +271,7 @@ export const getIdChiTietLoaiCV = (id:any) => {
     try {
       const result = await http.get(`/api/cong-viec/lay-cong-viec-theo-chi-tiet-loai/${id}`);
       //sau khi lấy kq đưa lên redux
-      console.log(result.data.contnet)
+      console.log(result.data.content)
       // let arrayChiTietLoaiCV: JobDetail[] = result.data.content;
       // const action = getAllChiTietLoaiCVAction(arrayChiTietLoaiCV);
       // dispatch(action);

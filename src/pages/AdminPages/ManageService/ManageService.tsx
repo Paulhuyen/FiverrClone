@@ -65,7 +65,6 @@ export default function ManageService({}: Props) {
       dataIndex:'action',
       render: (_, { id }) => (
         <div className='btn_action d-flex'>
-          <button className='btn btn-success mx-2'><EyeOutlined /></button>
           <button className='btn btn-danger mx-2'><DeleteOutlined onClick={()=>{
             const action:any = deletelIdServiceApi(id);
             dispatch(action);
@@ -88,6 +87,7 @@ export default function ManageService({}: Props) {
   };
   return (
     <div className='main'>
+      <h2>Quản Lý Dịch Vụ</h2>
          <main>
           <Drawer
             title="Thêm Loại Công Việc"

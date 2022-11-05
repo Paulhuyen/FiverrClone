@@ -13,7 +13,7 @@ export default function ModalAddJob() {
   const dispatch = useDispatch();
   const frm = useFormik({
     initialValues: {
-      id:"",
+      id:0,
       tenCongViec: "",
       danhGia: "",
       giaTien: "",
@@ -56,7 +56,7 @@ export default function ModalAddJob() {
           <div className="form-group">
             <label htmlFor="">Hình ảnh</label>
             <Input
-              type="text"
+              type="file"
               name="hinhAnh"
               id="hinhAnh"
               onChange={frm.handleChange}
@@ -66,27 +66,27 @@ export default function ModalAddJob() {
           <div className="form-group">
             <label htmlFor="">Đánh giá</label>
             <Input
-              type="text"
+              type="number"
               name="danhGia"
               id="danhGia"
               onChange={frm.handleChange}
               onBlur={frm.handleBlur}
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="">Người Tạo</label>
             <Input
-              type="text"
+              type="number"
               name="nguoiTao"
               id="nguoiTao"
               onChange={frm.handleChange}
               onBlur={frm.handleBlur}
             />
-          </div>
+          </div> */}
           <div className="form-group">
             <label htmlFor="">Gía Tiền</label>
             <Input
-              type="text"
+              type="number"
               name="giaTien"
               id="giaTien"
               onChange={frm.handleChange}
@@ -114,7 +114,7 @@ export default function ModalAddJob() {
           <div className="form-group">
             <label htmlFor="">Mã chi tiết loại công việc</label>
             <Input
-              type="text"
+              type="number"
               name="maChiTietLoaiCongViec"
               id="maChiTietLoaiCongViec"
               onChange={frm.handleChange}
@@ -124,7 +124,7 @@ export default function ModalAddJob() {
           <div className="form-group">
             <label htmlFor="">Sao công việc</label>
             <Input
-              type="text"
+              type="number"
               name="saoCongViec"
               id="saoCongViec"
               onChange={frm.handleChange}

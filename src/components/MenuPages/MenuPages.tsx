@@ -66,7 +66,11 @@ export default function MenuPages({}: Props) {
                           <a  key={itemSubS.id}
                           onClick={()=>{
                             navigate(`/joblist/${itemSubS.id}`);
-                            const action:any = getIdChiTietLoaiCV(itemSub.id);
+                            // console.log(itemSub.id)
+                            let id = itemSub.id
+                            console.log(id)
+
+                            const action:any = getIdChiTietLoaiCV(id);
                             dispatch(action)
                           }}
                           >

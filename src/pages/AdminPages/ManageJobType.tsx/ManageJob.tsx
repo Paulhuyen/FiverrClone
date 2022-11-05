@@ -68,7 +68,6 @@ export default function ManageJobType({}: Props) {
       dataIndex:'action',
       render: (_, { id }) => (
         <div className='btn_action d-flex'>
-          <button className='btn btn-success mx-2'><EyeOutlined /></button>
           <button className='btn btn-danger mx-2' onClick={()=>{
                        const action:any = deleteJob(id)
                        dispatch(action)
@@ -89,7 +88,7 @@ export default function ManageJobType({}: Props) {
       console.log('key search',value)
       dispatch(action)
     }else{
-      const action:any = getAllUser()
+      const action:any = getAllJob()
       dispatch(action)
     }
   };
@@ -111,6 +110,7 @@ export default function ManageJobType({}: Props) {
   };
   return (
     <div className='main'>
+      <h2>Quản Lý Công Việc</h2>
     <main>
        <Button type="primary" onClick={showDefaultDrawer}>
           Add Job
@@ -143,6 +143,7 @@ export default function ManageJobType({}: Props) {
             enterButton
           />
     </header>
+    <br />
     <Table columns={columns} dataSource={arrayJobAdmin}>
     </Table>
   </div>

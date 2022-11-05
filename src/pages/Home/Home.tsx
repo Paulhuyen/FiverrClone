@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StarOutlined,
   StarFilled,
@@ -7,13 +7,41 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import WorkingIndustries from "../WorkingIndustries/WorkingIndustries";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { searchUserApi } from "../../redux/reducers/AdminUserReducer";
+import { setStore } from "../../util/settings";
+import { searchJob } from "../../redux/reducers/ProducReducers";
 
-type Props = {
-  title?: string;
-};
+// type Props = {
+//   title?: string;
+// };
 
-export default function Home({ title }: Props) {
+export default function Home() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // input
+  const [key, setKey] = useState("");
+
+  const handleChange = (e: any) => {
+    setKey(e.target.value);
+  };
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (key) {
+      const action:any = searchJob(key);
+      dispatch(action);
+      // /joblist
+       navigate('/joblist');
+    }
+    if (!key) {
+      return;
+    }
+  };
+
+
   return (
     <div className="header-home">
       {/* CAROUSEL */}
@@ -50,7 +78,27 @@ export default function Home({ title }: Props) {
                         </p>
                         <h1>services for your business</h1>
                       </div>
-                      
+                      <div className="search-form">
+                        <form className="form"
+                         onSubmit={(e) => {
+                          handleSubmit(e);
+                        }}
+                        >
+                          <span className="icon">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                          </span>
+                          <input
+                            type="text"
+                            name="search"
+                            id="search"
+                            placeholder='Try "building mobile app"'
+                            onChange={(e) => {
+                              handleChange(e);
+                            }}
+                            />
+                            <button>Search</button>
+                        </form>
+                      </div>
                       <div className="popular d-flex mt-4">
                         <span>Popular:</span>
                         <a href="#">Website Design</a>
@@ -60,7 +108,7 @@ export default function Home({ title }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="col-right">
+                  <div className="col-right" >
                     <div className="item d-flex">
                       <div className="item-left"></div>
                       <div className="item-right">

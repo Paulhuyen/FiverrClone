@@ -39,7 +39,7 @@ export default function JobCardSearch({}: Props) {
                 </div>
               </div>
               {/* tenCongViec */}
-              <h3>
+              <h3 style={{height: 120}}>
                 <NavLink className="jobName" to="/chi-tiet-cong-viec">
                   {item.congViec.tenCongViec}
                 </NavLink>

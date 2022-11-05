@@ -195,7 +195,8 @@ export const updateUserApi = (data: any) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await http.put(`/api/users/${data.id}`, data);
-      alert("update thành công");
+      message.success('Update thành công')
+
     } catch (err) {
       console.log(err);
       alert("update Thất bại");
@@ -217,15 +218,15 @@ export const searchUserApi = (value: any) => {
   };
 };
 //update avataa
-export const updateAvatar = (file:any) => {
-  return async (dispatch: AppDispatch) => {
-    try {
-      const response = await http.post('/api/users/upload-avatar',file);
-      alert('avatar thành công')
-    } catch (err) {
-      console.log(err);
-      alert('avatar khong thành công')
+// export const updateAvatar = (file:any) => {
+//   return async (dispatch: AppDispatch) => {
+//     try {
+//       const response = await http.post('/api/users/upload-avatar',file);
+//       alert('avatar thành công')
+//     } catch (err) {
+//       console.log(err);
+//       alert('avatar khong thành công')
 
-    }
-  };
-};
+//     }
+//   };
+// };

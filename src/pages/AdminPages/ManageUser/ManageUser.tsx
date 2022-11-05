@@ -65,13 +65,14 @@ export default function ManageUser({}: Props) {
   };
   const showAddDrawer = () => {
     setOpenAdd(true);
-  }
+  };
   const onCloseAdd = () => {
     setOpenAdd(false);
   };
   //search
   const onSearch = (value: string) => {
     if (value) {
+    console.log(value)
       const action: any = searchUserApi(value);
       dispatch(action);
     } else {
@@ -95,126 +96,84 @@ export default function ManageUser({}: Props) {
     console.log("id call edit", id);
     dispatch(actionid);
   };
-  //table 
-  const columns:ColumnsType<UserModal> = [
+  //table
+  const columns: ColumnsType<UserModal> = [
     {
-      key:'1',
-      title:'ID',
-      dataIndex:'id'
+      key: "1",
+      title: "ID",
+      dataIndex: "id",
     },
     {
-      key:'2',
-      title:'Tên Công Việc',
-      dataIndex:'name',
+      key: "2",
+      title: "Tên Công Việc",
+      dataIndex: "name",
       width: 300,
       render: (text) => <p className="mt-0">{text}</p>,
     },
 
     {
-      key:'3',
-      title:'Hình Ảnh',
-      dataIndex:'avatar',
+      key: "3",
+      title: "Hình Ảnh",
+      dataIndex: "avatar",
       width: 150,
       render: (url) => <img src={url} width="70px" height="70px" alt="..." />,
     },
     {
-      key:'4',
-      title:'Email',
-      dataIndex:'email',
+      key: "4",
+      title: "Email",
+      dataIndex: "email",
       render: (text) => <p className="mt-0 table-text">{text}</p>,
     },
     {
-      key:'5',
-      title:'Postion',
-      dataIndex:'role',
+      key: "5",
+      title: "Postion",
+      dataIndex: "role",
       render: (text) => <p className="mt-0 table-text">{text}</p>,
     },
     {
-      key:'6',
-      title:'Action',
-      dataIndex:'action',
+      key: "6",
+      title: "Action",
+      dataIndex: "action",
       render: (_, { id }) => (
-        <div className='btn_action d-flex'>
-          <button className='btn btn-success mx-2'><EyeOutlined /></button>
-          <button className='btn btn-danger mx-2' ><DeleteOutlined  onClick={() => {
-                  dispatch(deleteUser(id));
-                  delUser(id);
-                }}/>
-           </button>
-          <button className='btn btn-primary mx-2' ><SettingOutlined onClick={() => {
-                  setOpenDr(true);
-                  idUserEdit(id);
-                }}/></button>
+        <div className="btn_action d-flex">
+          <button className="btn btn-danger mx-2">
+            <DeleteOutlined
+              onClick={() => {
+                dispatch(deleteUser(id));
+                delUser(id);
+              }}
+            />
+          </button>
+          <button className="btn btn-primary mx-2">
+            <SettingOutlined
+              onClick={() => {
+                setOpenDr(true);
+                idUserEdit(id);
+              }}
+            />
+          </button>
         </div>
-      )
+      ),
     },
-  ]
+  ];
   //end table
-  // const renderListUser = () => {
-  //   return arrayUser.map((item: UserModal, index: number) => {
-  //     return (
-  //       <tr key={index}>
-  //         <td>{item.id}</td>
-  //         <td>{item.name}</td>
-  //         <td>
-  //           <img
-  //             src={item?.avatar}
-  //             style={{ width: 50, height: 50, objectFit: "cover" }}
-  //             alt="..."
-  //           />
-  //         </td>
-  //         <td>{item.email}</td>
-  //         <td>{item.role}</td>
-  //         <td>
-  //           <div className="d-flex">
-  //             <button
-  //               className="btn btn-danger mx-2"
-  //               onClick={() => {
-  //                 dispatch(deleteUser(item.id));
-  //                 delUser(item.id);
-  //               }}
-  //             >
-  //               <DeleteOutlined />
-  //             </button>
-  //             <button
-  //               className="btn btn-primary mx-2"
-  //               onClick={() => {
-  //                 setOpenDr(true);
-  //                 idUserEdit(item.id);
-  //               }}
-  //             >
-  //               <SettingOutlined />
-  //             </button>
-  //           </div>
-  //         </td>
-  //       </tr>
-  //     );
-  //   });
-  // };
 
   return (
     <div className="main">
+      <h2>Quản Lý Người Dùng</h2>
       <main>
-      <Button type="primary" onClick={showAddDrawer}>
+        <Button type="primary" onClick={showAddDrawer}>
           Add Job
-       </Button>
-       <Drawer
-        // title="Close"
-        width={720}
-        onClose={onCloseAdd}
-        open={openAdd}
-        bodyStyle={{ paddingBottom: 80 }}
-      >
-          <ModalAddUser />
-      </Drawer>
-
-
-
-        {/* <Button type="primary" onClick={showModal}>
-          Thêm người dùng
         </Button>
-        <Modal title="Add user" open={open} onCancel={hideModal}>
-        </Modal> */}
+        <Drawer
+          // title="Close"
+          width={720}
+          onClose={onCloseAdd}
+          open={openAdd}
+          bodyStyle={{ paddingBottom: 80 }}
+        >
+          <ModalAddUser />
+        </Drawer>
         <div>
           <Drawer
             title="Manage User"
@@ -239,8 +198,7 @@ export default function ManageUser({}: Props) {
           />
         </div>
         <div className="show-table">
-          <Table columns={columns} dataSource={arrayUser}>
-          </Table>
+          <Table columns={columns} dataSource={arrayUser}></Table>
         </div>
       </header>
     </div>

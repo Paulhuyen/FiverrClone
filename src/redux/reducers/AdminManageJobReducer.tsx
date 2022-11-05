@@ -47,7 +47,7 @@ export const getAllJob = () => {
 };
 
 // create
-export const postJob = (value: any) => {
+export const postJob = (value: Job) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await http.post("/api/cong-viec", value);

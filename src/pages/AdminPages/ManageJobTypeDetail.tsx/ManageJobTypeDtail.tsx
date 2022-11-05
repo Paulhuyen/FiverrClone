@@ -91,7 +91,8 @@ export default function ManageJobTypeDtail({}: Props) {
     setOpenEdit(false);
   };
   return (
-    <div>
+    <div className='main'>
+      <h2>Quản Lý Công Việc</h2>
         <main>
         <Drawer
         width={720}

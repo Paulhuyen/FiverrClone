@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { message } from 'antd';
 import { http } from '../../util/settings';
 import { AppDispatch } from '../configStore';
 import { UserModal } from '../models/jobModel';
@@ -38,11 +39,11 @@ export const singUpApi = (values: UserModal) => {
           .post(
             `/api/users/upload-avatar`,
             { formFile: file },
-            // {
-            //   headers: { "Content-Type": "multipart/form-data" },
-            // }
+            {
+              headers: { "Content-Type": "multipart/form-data" },
+            }
           )
-          alert('okde')
+          message.success('Update Avatar thành công')
       } catch (err) {
         console.log(err);
       }

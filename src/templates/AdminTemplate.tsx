@@ -42,37 +42,37 @@ export default function AdminTemplate({}: Props) {
   return (
     <div className="section">
       <div className="dashboard_menu">
-        <div className="item-logo text-center"><h1>Fiverr</h1></div>
+        <div className="item-logo text-center"><NavLink to={'/'} ><img width={150} style={{margin:10}} src="./img/Fiverr_logo.png" alt="" /></NavLink></div>
         <div className="item-menu">
           <li>
             <NavLink to="">
-              <div className="icon">
+              {/* <div className="icon">
                 <UserOutlined />
-              </div>
+              </div> */}
               <div className="title">Quản Lý Người Dùng</div>
             </NavLink>
           </li>
           <li>
             <NavLink to="managenmentjob">
-              <div className="icon">
+              {/* <div className="icon">
                 <UserOutlined />
-              </div>
+              </div> */}
               <div className="title">Quản Lý Công Việc</div>
             </NavLink>
           </li>
           <li>
             <NavLink to="managenmentjobtype">
-              <div className="icon">
+              {/* <div className="icon">
                 <UserOutlined />
-              </div>
+              </div> */}
               <div className="title">Quản Lý Loại Công Việc</div>
             </NavLink>
           </li>
           <li>
             <NavLink to="managejobtypedetail">
-              <div className="icon">
+              {/* <div className="icon">
                 <UserOutlined />
-              </div>
+              </div> */}
               <div className="title">Quản Lý Chi Tiết Loại Công Việc</div>
             </NavLink>
           </li>
