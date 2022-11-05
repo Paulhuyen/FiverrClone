@@ -163,7 +163,7 @@ export default function ManageUser({}: Props) {
       <h2>Quản Lý Người Dùng</h2>
       <main>
         <Button type="primary" onClick={showAddDrawer}>
-          Add Job
+          Add User
         </Button>
         <Drawer
           // title="Close"

@@ -113,7 +113,7 @@ export default function ManageJobType({}: Props) {
       <h2>Quản Lý Công Việc</h2>
     <main>
        <Button type="primary" onClick={showDefaultDrawer}>
-          Add Job
+          Add Job Type
        </Button>
        <Drawer
         // title="Close"
