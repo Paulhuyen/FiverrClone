@@ -1,6 +1,6 @@
 import { AudioOutlined } from "@ant-design/icons";
 import { Dropdown, Input } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../assets/styles.scss";
@@ -27,7 +27,7 @@ const onSearch = (value: string) => console.log(value);
 export default function MenuPages({}: Props) {
   const { arrayJobMenu } = useSelector((state: RootState) => state.ProducReducers);
   const userLogin = getStoreJson('userLogin')
-
+ const [sparam, setSParam] = useState("")
   
   function logOut(){
     localStorage.clear();
@@ -55,22 +55,19 @@ export default function MenuPages({}: Props) {
           <div className="sub-menu">
             <ul className="row">
               {menuPages.dsNhomChiTietLoai?.map(
-                (itemSub: DsNhomChiTietLoai) => {
+                (itemSub: DsNhomChiTietLoai, indexSub:number) => {
                   return (
-                    <li key={itemSub.id} className="col-4">
+                    <li key={indexSub} className="col-4">
                       <a href="" className="tenNhom">
                         {itemSub.tenNhom}
                       </a>
-                      {itemSub.dsChiTietLoai.map((itemSubS: DsChiTietLoai) => {
+                      {itemSub.dsChiTietLoai.map((itemSubS: DsChiTietLoai, indexSubs:number) => {
                         return (
-                          <a  key={itemSubS.id}
+                          <a  key={indexSubs}
                           onClick={()=>{
-                            navigate(`/joblist/${itemSubS.id}`);
-                            // console.log(itemSub.id)
-                            let id = itemSub.id
-                            console.log(id)
-
-                            const action:any = getIdChiTietLoaiCV(id);
+                            navigate(`/job/${itemSubS.id}`);
+                            const action:any = getIdChiTietLoaiCV(itemSubS.id);
+                            console.log(itemSub.id)
                             dispatch(action)
                           }}
                           >
@@ -111,10 +108,11 @@ export default function MenuPages({}: Props) {
   }
     //search
     const onSearch = (value: string) => {
+      setSParam(value)
       if(value){
         const action:any = searchJob(value)
         console.log('key search',value)
-         navigate(`/joblist`) 
+         navigate(`/joblist/${value}`) 
         dispatch(action)
       }else{
         const action:any = getAllProduct()

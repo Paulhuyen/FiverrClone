@@ -94,7 +94,7 @@ const initialState: any = {
   arrJobCategories: [],
   congViecDaThue: [],
   arraySearchJob:[],
-  arrseacrhRong: {}
+  ChiTietCV: []
 };
 
 const ProducReducers = createSlice({
@@ -128,7 +128,7 @@ const ProducReducers = createSlice({
     },
     // lấy công việc theo chi tiết loại ID
     getAllChiTietLoaiCVAction: (state, action: PayloadAction<JobDetail[]>) => {
-      state.arraySearchJob = action.payload;
+      state.ChiTietCV = action.payload;
     },
   },
 });
@@ -255,9 +255,7 @@ export const searchJob= (value:any) => {
   return async (dispatch:AppDispatch) => {
       try {
           const response = await http.get(`/api/cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`)
-          console.log(response.data.content);
           let arraySearchJob : JobDetail[] = response.data.content;
-          // console.log(arrayJob?.congViec)
           const action = searchJobAction(arraySearchJob)
           dispatch(action)
       }catch(err){
@@ -270,12 +268,9 @@ export const getIdChiTietLoaiCV = (id:any) => {
   return async (dispatch: AppDispatch) => {
     try {
       const result = await http.get(`/api/cong-viec/lay-cong-viec-theo-chi-tiet-loai/${id}`);
-      //sau khi lấy kq đưa lên redux
-      console.log(result.data.content)
-      // let arrayChiTietLoaiCV: JobDetail[] = result.data.content;
-      // const action = getAllChiTietLoaiCVAction(arrayChiTietLoaiCV);
-      // dispatch(action);
-      // console.log(arrayChiTietLoaiCV);
+      let ChiTietCV: JobDetail[] = result.data.content;
+      const action = getAllChiTietLoaiCVAction(ChiTietCV);
+      dispatch(action);
       console.log(id)
     } catch (err) {
       console.log(err);

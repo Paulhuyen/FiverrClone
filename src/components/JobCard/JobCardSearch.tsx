@@ -8,7 +8,6 @@ type Props = {}
 
 export default function JobCardSearch({}: Props) {
     const { arraySearchJob } = useSelector((state: RootState) => state.ProducReducers);
-    console.log('kq search',arraySearchJob)
     const dispatch: AppDispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
@@ -30,7 +29,7 @@ export default function JobCardSearch({}: Props) {
               <div className="accountHolder d-flex">
                 <div className="avatar">
                   {/* avatar */}
-                  <img src="./img/jobs/SEO.webp" alt="..." />
+                  <img src={item.avatar} alt="..." />
                 </div>
                 <div className="accountName">
                   {/* tenNguoiTao */}
@@ -70,7 +69,7 @@ export default function JobCardSearch({}: Props) {
       };
   return (
     <div className="job-card-result " >
-    <div className="row">
+      <div className="row">
       {renderCongViecSearch()}
       </div>
       </div>

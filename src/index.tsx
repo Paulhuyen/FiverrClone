@@ -31,6 +31,7 @@ import MainTemplate from './templates/MainTemplate';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import JobsList from './pages/JobList/JobList';
+import JobCard from './components/JobCard/JobCard';
 export const history = createBrowserHistory({ window });
 
 
@@ -60,7 +61,10 @@ root.render(
                 <Route path=':id' element={<Detail/>}></Route>
             </Route>
             <Route path='joblist' >
-                <Route path=':id' element={<JobsList/>}></Route>
+                <Route path=':name' element={<JobsList/>}></Route>
+            </Route>
+            <Route path='job'>
+                <Route path=':id' element={<JobCard/>}></Route>
             </Route>
             <Route path='profile' element={<Profile/>}></Route>
             <Route path='login' element={<Login/>}></Route>

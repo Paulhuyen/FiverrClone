@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ArrowRightOutlined, RightOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState  } from "../../redux/configStore";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 import { getStoreJson } from "../../util/settings";
 // import Slider from 'react-slick'
 import 'keen-slider/keen-slider.min.css'
@@ -43,15 +43,15 @@ export default function DetailCategories() {
             <div className="card-footer">
               <ul>
                 {item.dsChiTietLoai?.map(
-                  (itemds: DsChiTietLoai) => {
+                  (itemds: DsChiTietLoai, indexds:number) => {
                     return (
                       <li >
-                        <p key={itemds.id} onClick={()=>{
-                            navigate(`/joblist/${itemds.id}`)
+                        <a key={indexds} onClick={()=>{
+                            navigate(`/job/${itemds.id}`)
                             const action:any = getIdChiTietLoaiCV(itemds.id);
                             dispatch(action)
                           }}
-                        >{itemds.tenChiTiet}</p>
+                        >{itemds.tenChiTiet}</a>
                         <ArrowRightOutlined className="icon" />
                       </li>
                     );

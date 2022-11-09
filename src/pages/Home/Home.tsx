@@ -33,8 +33,7 @@ export default function Home() {
     if (key) {
       const action:any = searchJob(key);
       dispatch(action);
-      // /joblist
-       navigate('/joblist');
+       navigate(`/joblist/${key}`);
     }
     if (!key) {
       return;
